@@ -39,28 +39,45 @@ setNewsList(result.articles)
         </Text>
       </View>
       {/* images */}
-
-      <FlatList
-        data={newsList}
-        horizontal
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            style={{
-              marginTop: responsiveHeight(2),
-              width: responsiveWidth(80),
-              marginRight: responsiveWidth(4),
-            }}
-          >
-            <Image
-              source={{ uri: item.urlToImage }}
+      <View>
+        <FlatList
+          data={newsList}
+          horizontal
+          renderItem={({ item }) => (
+            <TouchableOpacity
               style={{
-                height: responsiveHeight(30),
-                borderRadius: responsiveHeight(2),
+                marginTop: responsiveHeight(2),
+                width: responsiveWidth(80),
+                marginRight: responsiveWidth(4),
               }}
-            />
-          </TouchableOpacity>
-        )}
-      />
+            >
+              <Image
+                source={{ uri: item.urlToImage }}
+                style={{
+                  height: responsiveHeight(30),
+                  borderRadius: responsiveHeight(2),
+                }}
+              />
+              <View style={{}}> 
+              <Image
+                source={require("../../assets/world.png")}
+                style={{ height: responsiveHeight(10), resizeMode: "contain" }}
+              />
+              <Text
+                style={{
+                  height: responsiveHeight(3),
+                  backgroundColor: "#2196f3",
+                  width: responsiveWidth(20),
+                }}
+              >
+                World
+              </Text>
+              </View>
+             
+            </TouchableOpacity>
+          )}
+        />
+      </View>
     </View>
   );
 }
