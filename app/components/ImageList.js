@@ -43,6 +43,7 @@ setNewsList(result.articles)
         <FlatList
           data={newsList}
           horizontal
+          showsHorizontalScrollIndicator={false}
           renderItem={({ item }) => (
             <TouchableOpacity
               style={{
@@ -61,15 +62,15 @@ setNewsList(result.articles)
               <View
                 style={{
                   flexDirection: "row",
-                  height: responsiveHeight(4),
-                  width: responsiveWidth(22),
-                  backgroundColor: "#2196f3",
+                  height: responsiveHeight(3.5),
+                  width: responsiveWidth(20),
+                  backgroundColor: "white",
                   borderRadius: responsiveHeight(1.5),
                   justifyContent: "center",
                   alignItems: "center",
-                  paddingHorizontal: responsiveWidth(2),
-                  marginTop: responsiveHeight(10),
-                  position:"absolute"
+                  marginTop: responsiveHeight(18),
+                  marginLeft: responsiveWidth(2),
+                  position: "absolute",
                 }}
               >
                 <Image
@@ -82,14 +83,34 @@ setNewsList(result.articles)
                   }}
                 />
                 <Text
-                  style={{ fontSize: responsiveFontSize(1.7), color: "white" }}
+                  style={{
+                    fontSize: responsiveFontSize(1.7),
+                    color: "black",
+                    marginRight: responsiveWidth(2),
+                  }}
                 >
                   World
                 </Text>
               </View>
+              <Text
+                style={{
+                  position: "absolute",
+                  marginTop: responsiveHeight(22),
+                  color: "white",
+                  marginLeft: responsiveWidth(2),
+                  fontWeight: "600",
+                 
+                }}
+              >
+                {item.title}
+              </Text>
             </TouchableOpacity>
           )}
         />
+      </View>
+      {/* Recommendation */}
+      <View>
+
       </View>
     </View>
   );
