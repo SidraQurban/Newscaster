@@ -17,7 +17,7 @@ const Tabs = () => {
         tabBarShowLabel: false,
         tabBarStyle: {
           position: "absolute",
-          backgroundColor: "black",
+          backgroundColor: "white",
           height: responsiveHeight(10),
         },
       }}
@@ -31,24 +31,24 @@ const Tabs = () => {
               style={{
                 alignItems: "center",
                 justifyContent: "center",
-                top: responsiveHeight(1),
+                top: responsiveHeight(2),
                 width:responsiveWidth(20)
               }}
             >
               <Ionicons
                 name="home"
                 size={25}
-                style={{ color: focused ? "white" : "red" }}
+                style={{ color: focused ? "#2196f3" : "#979dac" }}
               />
               <Text
                 style={{
-                  color: focused ? "white" : "red",
-                  fontSize: responsiveFontSize(1.5),
+                  color: focused ? "#2196f3" : "#979dac",
+                  fontSize: responsiveFontSize(1.7),
                   fontWeight:"600",
                   marginTop: responsiveHeight(0.5),
                 }}
               >
-                HOME
+                Home
               </Text>
             </View>
           ),
@@ -60,24 +60,24 @@ const Tabs = () => {
               style={{
                 alignItems: "center",
                 justifyContent: "center",
-                top: responsiveHeight(1),
+                top: responsiveHeight(2),
                 width:responsiveWidth(20)
               }}
             >
               <Fontisto
                 name="world-o"
                 size={25}
-                style={{ color: focused ? "white" : "red" }}
+                style={{ color: focused ? "#2196f3" : "#979dac" }}
               />
               <Text
                 style={{
-                  color: focused ? "white" : "red",
-                  fontSize: responsiveFontSize(1.5),
+                    color: focused ? "#2196f3" : "#979dac",
+                  fontSize: responsiveFontSize(1.7),
                   marginTop: responsiveHeight(0.5),
                   fontWeight:"600",
                 }}
               >
-                DISCOVER
+                Discover 
               </Text>
             </View>
           ),
@@ -88,24 +88,24 @@ const Tabs = () => {
               style={{
                 alignItems: "center",
                 justifyContent: "center",
-                top: responsiveHeight(1),
+                top: responsiveHeight(2),
                 width:responsiveWidth(20)
               }}
             >
               <Fontisto
                 name="favorite"
                 size={25}
-                style={{ color: focused ? "white" : "red" }}
+                style={{ color: focused ? "#2196f3" : "#979dac" }}
               />
               <Text
                 style={{
-                  color: focused ? "white" : "red",
-                  fontSize: responsiveFontSize(1.5),
+                    color: focused ? "#2196f3" : "#979dac",
+                  fontSize: responsiveFontSize(1.7),
                   fontWeight:"600",
                   marginTop: responsiveHeight(0.5),
                 }}
               >
-                SAVE
+                Saved
               </Text>
             </View>
           ),
@@ -116,24 +116,24 @@ const Tabs = () => {
               style={{
                 alignItems: "center",
                 justifyContent: "center",
-                top: responsiveHeight(1),
+                top: responsiveHeight(2),
                 width:responsiveWidth(20)
               }}
             >
               <FontAwesome6
                 name="user"
                 size={25}
-                style={{ color: focused ? "white" : "red" }}
+                style={{ color: focused ? "#2196f3" : "#979dac" }}
               />
               <Text
                 style={{
-                  color: focused ? "white" : "red",
-                  fontSize: responsiveFontSize(1.5),
+                    color: focused ? "#2196f3" : "#979dac",
+                  fontSize: responsiveFontSize(1.7),
                   marginTop: responsiveHeight(0.5),
                   fontWeight:"600",
                 }}
               >
-                PROFILE
+                Profile
               </Text>
             </View>
           ),
