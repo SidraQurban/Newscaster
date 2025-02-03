@@ -1,10 +1,23 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text, TouchableOpacity, ScrollView, FlatList } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
+import GlobalApi from '../services/GlobalApi'
+import { Image } from 'react-native'
 
 const ImageList = () => {
+const [newsList, setNewsList] = useState([])    
+useEffect (() => {
+getTopHeadline()
+},[])
+
+const getTopHeadline =async () =>{
+const result = (await GlobalApi.getTopHeadline).data;
+setNewsList(result.articles)
+}
+
   return (
     <View style={{ padding: responsiveWidth(2) }}>
+      {/* text */}
       <View
         style={{
           marginTop: responsiveHeight(2),
@@ -22,9 +35,32 @@ const ImageList = () => {
             fontWeight: "600",
           }}
         >
-          Show more
+          Show More
         </Text>
       </View>
+      {/* images */}
+
+      <FlatList
+        data={newsList}
+        horizontal
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            style={{
+              marginTop: responsiveHeight(2),
+              width: responsiveWidth(80),
+              marginRight: responsiveWidth(4),
+            }}
+          >
+            <Image
+              source={{ uri: item.urlToImage }}
+              style={{
+                height: responsiveHeight(30),
+                borderRadius: responsiveHeight(2),
+              }}
+            />
+          </TouchableOpacity>
+        )}
+      />
     </View>
   );
 }
