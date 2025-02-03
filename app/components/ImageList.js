@@ -6,7 +6,7 @@ const ImageList = () => {
   return (
     <View style={{ padding: responsiveWidth(2) }}>
         <View style={{marginTop:responsiveHeight(3)}}>
-        <Text style={{fontSize:responsiveFontSize(2.5)}}>Breaking News</Text>
+        <Text style={{fontSize:responsiveFontSize(2.5), fontWeight:"bold"}}>Breaking News</Text>
         </View>
     
     </View>
