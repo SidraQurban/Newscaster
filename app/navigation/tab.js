@@ -31,6 +31,8 @@ const Tabs = () => {
           position: "absolute",
           backgroundColor: "white",
           height: responsiveHeight(10),
+          borderTopLeftRadius:responsiveHeight(2.5),
+          borderTopRightRadius: responsiveHeight(2.5),
         },
       }}
     >

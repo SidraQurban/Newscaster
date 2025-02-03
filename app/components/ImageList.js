@@ -18,7 +18,7 @@ const ImageList = () => {
         <Text
           style={{
             fontSize: responsiveFontSize(2),
-            color: "#2196f3",
+            color: "#979dac",
             fontWeight: "600",
           }}
         >
