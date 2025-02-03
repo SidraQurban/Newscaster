@@ -5,7 +5,7 @@ import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-nat
 const ImageList = () => {
   return (
     <View style={{ padding: responsiveWidth(2) }}>
-        <View style={{marginTop:responsiveHeight(3)}}>
+        <View style={{marginTop:responsiveHeight(2)}}>
         <Text style={{fontSize:responsiveFontSize(2.5), fontWeight:"bold"}}>Breaking News</Text>
         </View>
     
