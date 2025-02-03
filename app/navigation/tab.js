@@ -5,8 +5,8 @@ import HomeScreen from "../screens/HomeScreen";
 import DiscoverScreen from "../screens/DiscoverScreen";
 import SaveScreen from "../screens/SaveScreen";
 import ProfileScreen from "../screens/ProfileScreen";
-import { responsiveHeight } from "react-native-responsive-dimensions";
-import { Ionicons } from "react-native-vector-icons";
+import { responsiveFontSize, responsiveHeight, responsiveWidth } from "react-native-responsive-dimensions";
+import { Ionicons,Fontisto,FontAwesome6 } from "react-native-vector-icons";
 
 const Tab = createBottomTabNavigator();
 const Tabs = () => {
@@ -17,7 +17,7 @@ const Tabs = () => {
         tabBarStyle: {
           position: "absolute",
           backgroundColor: "black",
-          height: responsiveHeight(8),
+          height: responsiveHeight(10),
         },
       }}
     >
@@ -26,22 +26,117 @@ const Tabs = () => {
         component={HomeScreen}
         options={{
           tabBarIcon: ({ focused }) => (
-            <View>
+            <View
+              style={{
+                alignItems: "center",
+                justifyContent: "center",
+                top: responsiveHeight(1),
+                width:responsiveWidth(20)
+              }}
+            >
               <Ionicons
                 name="home"
-                size={15}
+                size={25}
                 style={{ color: focused ? "white" : "red" }}
               />
-              <Text style={{ color: focused ? "white" : "gray", fontSize: 10 }}>
-                Home
+              <Text
+                style={{
+                  color: focused ? "white" : "red",
+                  fontSize: responsiveFontSize(1.5),
+                  fontWeight:"600",
+                  marginTop: responsiveHeight(0.5),
+                }}
+              >
+                HOME
               </Text>
             </View>
           ),
         }}
       />
-      <Tab.Screen name="Discover" component={DiscoverScreen} />
-      <Tab.Screen name="Save" component={SaveScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen name="Discover" component={DiscoverScreen}  options={{
+          tabBarIcon: ({ focused }) => (
+            <View
+              style={{
+                alignItems: "center",
+                justifyContent: "center",
+                top: responsiveHeight(1),
+                width:responsiveWidth(20)
+              }}
+            >
+              <Fontisto
+                name="world-o"
+                size={25}
+                style={{ color: focused ? "white" : "red" }}
+              />
+              <Text
+                style={{
+                  color: focused ? "white" : "red",
+                  fontSize: responsiveFontSize(1.5),
+                  marginTop: responsiveHeight(0.5),
+                  fontWeight:"600",
+                }}
+              >
+                DISCOVER
+              </Text>
+            </View>
+          ),
+        }}/>
+      <Tab.Screen name="Save" component={SaveScreen}  options={{
+          tabBarIcon: ({ focused }) => (
+            <View
+              style={{
+                alignItems: "center",
+                justifyContent: "center",
+                top: responsiveHeight(1),
+                width:responsiveWidth(20)
+              }}
+            >
+              <Fontisto
+                name="favorite"
+                size={25}
+                style={{ color: focused ? "white" : "red" }}
+              />
+              <Text
+                style={{
+                  color: focused ? "white" : "red",
+                  fontSize: responsiveFontSize(1.5),
+                  fontWeight:"600",
+                  marginTop: responsiveHeight(0.5),
+                }}
+              >
+                SAVE
+              </Text>
+            </View>
+          ),
+        }} />
+      <Tab.Screen name="Profile" component={ProfileScreen}  options={{
+          tabBarIcon: ({ focused }) => (
+            <View
+              style={{
+                alignItems: "center",
+                justifyContent: "center",
+                top: responsiveHeight(1),
+                width:responsiveWidth(20)
+              }}
+            >
+              <FontAwesome6
+                name="user"
+                size={25}
+                style={{ color: focused ? "white" : "red" }}
+              />
+              <Text
+                style={{
+                  color: focused ? "white" : "red",
+                  fontSize: responsiveFontSize(1.5),
+                  marginTop: responsiveHeight(0.5),
+                  fontWeight:"600",
+                }}
+              >
+                PROFILE
+              </Text>
+            </View>
+          ),
+        }} />
     </Tab.Navigator>
   );
 };
