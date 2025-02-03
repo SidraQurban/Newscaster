@@ -58,22 +58,29 @@ setNewsList(result.articles)
                   borderRadius: responsiveHeight(2),
                 }}
               />
-              <View style={{flexDirection:"row"}}> 
-              <Image
-                source={require("../../assets/world.png")}
-                style={{ height: responsiveHeight(2), resizeMode: "contain" }}
-              />
-              <Text
-                // style={{
-                //   height: responsiveHeight(3),
-                //   backgroundColor: "#2196f3",
-                //   width: responsiveWidth(20),
-                // }}
+              <View
+                style={{
+                  flexDirection: "row",
+                  height: responsiveHeight(4),
+                  width: responsiveWidth(25),
+                  backgroundColor: "#2196f3",
+                  borderRadius: responsiveHeight(1.5),
+                  justifyContent: "center",
+                  alignItems: "center",
+                  paddingHorizontal: responsiveWidth(2)
+                }}
               >
-                World
-              </Text>
+                <Image
+                  source={require("../../assets/world.png")}
+                  style={{
+                    height: responsiveHeight(2),
+                    resizeMode: "contain",
+                    width: responsiveWidth(5),
+                    marginRight: responsiveWidth(2),
+                  }}
+                />
+                <Text style={{}}>World</Text>
               </View>
-             
             </TouchableOpacity>
           )}
         />
