@@ -3,6 +3,7 @@ import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import {MaterialCommunityIcons, Ionicons, Fontisto} from "react-native-vector-icons"
 import { responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
+import ImageList from '../components/ImageList'
 const HomeScreen = () => {
   return (
     <View style={{ padding: responsiveWidth(2) }}>
@@ -84,7 +85,7 @@ const HomeScreen = () => {
         </View>
       </SafeAreaView>
       {/* body */}
-      <Text>hi</Text>
+     <ImageList/>
     </View>
   );
 }
