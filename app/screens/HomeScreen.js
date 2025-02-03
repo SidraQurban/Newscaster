@@ -83,6 +83,8 @@ const HomeScreen = () => {
           </TouchableOpacity>
         </View>
       </SafeAreaView>
+      {/* body */}
+      <Text>hi</Text>
     </View>
   );
 }
