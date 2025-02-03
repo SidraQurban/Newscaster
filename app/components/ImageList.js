@@ -62,12 +62,14 @@ setNewsList(result.articles)
                 style={{
                   flexDirection: "row",
                   height: responsiveHeight(4),
-                  width: responsiveWidth(25),
+                  width: responsiveWidth(22),
                   backgroundColor: "#2196f3",
                   borderRadius: responsiveHeight(1.5),
                   justifyContent: "center",
                   alignItems: "center",
-                  paddingHorizontal: responsiveWidth(2)
+                  paddingHorizontal: responsiveWidth(2),
+                  marginTop: responsiveHeight(10),
+                  position:"absolute"
                 }}
               >
                 <Image
@@ -79,7 +81,11 @@ setNewsList(result.articles)
                     marginRight: responsiveWidth(2),
                   }}
                 />
-                <Text style={{}}>World</Text>
+                <Text
+                  style={{ fontSize: responsiveFontSize(1.7), color: "white" }}
+                >
+                  World
+                </Text>
               </View>
             </TouchableOpacity>
           )}
