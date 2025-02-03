@@ -7,7 +7,7 @@ const ImageList = () => {
     <View style={{ padding: responsiveWidth(2) }}>
         <View style={{marginTop:responsiveHeight(2), flexDirection:"row", justifyContent:"space-between"}}>
         <Text style={{fontSize:responsiveFontSize(2.5), fontWeight:"bold"}}>Breaking News</Text>
-       <Text style={{}}>Show more</Text>
+       <Text style={{fontSize:responsiveFontSize(2), color:"blue"}}>Show more</Text>
         </View>
     
     </View>
