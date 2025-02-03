@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
 import GlobalApi from '../services/GlobalApi'
 import { Image } from 'react-native'
+import Recommand from './Recommand'
 
 const ImageList = () => {
 const [newsList, setNewsList] = useState([])    
@@ -55,7 +56,7 @@ setNewsList(result.articles)
               <Image
                 source={{ uri: item.urlToImage }}
                 style={{
-                  height: responsiveHeight(30),
+                  height: responsiveHeight(35),
                   borderRadius: responsiveHeight(2),
                 }}
               />
@@ -68,7 +69,7 @@ setNewsList(result.articles)
                   borderRadius: responsiveHeight(1.5),
                   justifyContent: "center",
                   alignItems: "center",
-                  marginTop: responsiveHeight(18),
+                  marginTop: responsiveHeight(22),
                   marginLeft: responsiveWidth(2),
                   position: "absolute",
                 }}
@@ -95,7 +96,7 @@ setNewsList(result.articles)
               <Text
                 style={{
                   position: "absolute",
-                  marginTop: responsiveHeight(22),
+                  marginTop: responsiveHeight(27),
                   color: "white",
                   marginLeft: responsiveWidth(2),
                   fontWeight: "600",
@@ -109,6 +110,7 @@ setNewsList(result.articles)
         />
       </View>
       {/* Recommendation */}
+      <Recommand/>
       <View>
 
       </View>
