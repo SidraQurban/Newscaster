@@ -5,7 +5,10 @@ import { responsiveWidth } from 'react-native-responsive-dimensions'
 const ImageList = () => {
   return (
     <View style={{ padding: responsiveWidth(2) }}>
-      <Text>ImageList</Text>
+        <View style={{}}>
+        <Text>Breaking News</Text>
+        </View>
+    
     </View>
   )
 }
