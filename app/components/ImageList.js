@@ -58,17 +58,17 @@ setNewsList(result.articles)
                   borderRadius: responsiveHeight(2),
                 }}
               />
-              <View style={{}}> 
+              <View style={{flexDirection:"row"}}> 
               <Image
                 source={require("../../assets/world.png")}
-                style={{ height: responsiveHeight(10), resizeMode: "contain" }}
+                style={{ height: responsiveHeight(2), resizeMode: "contain" }}
               />
               <Text
-                style={{
-                  height: responsiveHeight(3),
-                  backgroundColor: "#2196f3",
-                  width: responsiveWidth(20),
-                }}
+                // style={{
+                //   height: responsiveHeight(3),
+                //   backgroundColor: "#2196f3",
+                //   width: responsiveWidth(20),
+                // }}
               >
                 World
               </Text>
