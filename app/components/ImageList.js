@@ -5,8 +5,10 @@ import GlobalApi from '../services/GlobalApi'
 import { Image } from 'react-native'
 import Recommand from './Recommand'
 import { useNavigation } from '@react-navigation/native'
+import { useTheme } from '../ThemeProvider'
 
 const ImageList = () => {
+const {isDarkMode} = useTheme();
 const navigation = useNavigation();
 const [newsList, setNewsList] = useState([])    
 useEffect (() => {
@@ -26,7 +28,13 @@ setNewsList(result.articles)
 }
 
   return (
-    <View style={{ padding: responsiveWidth(1) }}>
+    <View
+      style={{
+        padding: responsiveWidth(1),
+        backgroundColor: isDarkMode ? "#212529" : "neutral",
+        height: isDarkMode ? responsiveHeight(100) : "auto",
+      }}
+    >
       {/* text */}
       <View
         style={{
@@ -35,7 +43,13 @@ setNewsList(result.articles)
           justifyContent: "space-between",
         }}
       >
-        <Text style={{ fontSize: responsiveFontSize(2.5), fontWeight: "bold" }}>
+        <Text
+          style={{
+            fontSize: responsiveFontSize(2.5),
+            fontWeight: "bold",
+            color: isDarkMode ? "white" : "black",
+          }}
+        >
           Breaking News
         </Text>
         <TouchableOpacity onPress={() => navigation.navigate("Discover")}>
@@ -128,7 +142,7 @@ setNewsList(result.articles)
           marginTop: responsiveHeight(3),
         }}
       >
-        <Text style={{ fontSize: responsiveFontSize(2.5), fontWeight: "bold" }}>
+        <Text style={{ fontSize: responsiveFontSize(2.5), fontWeight: "bold" , color:isDarkMode?"white":"black"}}>
           Recommandation
         </Text>
         <TouchableOpacity onPress={() => navigation.navigate("Discover")}>

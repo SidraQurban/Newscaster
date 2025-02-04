@@ -5,11 +5,18 @@ import { MaterialCommunityIcons, Ionicons, Fontisto } from "react-native-vector-
 import { responsiveHeight, responsiveWidth } from "react-native-responsive-dimensions";
 import ImageList from "../components/ImageList";
 import { useNavigation } from "@react-navigation/native";
+import { useTheme } from "../ThemeProvider";
 
 const HomeScreen = () => {
 const navigation = useNavigation();
+const {isDarkMode} = useTheme();
   return (
-    <View style={{ padding: responsiveWidth(3) }}>
+    <View
+      style={{
+        padding: responsiveWidth(3),
+        backgroundColor: isDarkMode ? "#212529" : "neutral",
+      }}
+    >
       <FlatList
         ListHeaderComponent={
           <SafeAreaView>
@@ -25,7 +32,7 @@ const navigation = useNavigation();
             >
               <TouchableOpacity
                 style={{
-                  backgroundColor: "white",
+                  backgroundColor: isDarkMode ? "#212529" : "white",
                   height: responsiveHeight(4.5),
                   width: responsiveHeight(4.5),
                   borderRadius: responsiveHeight(2.5),
@@ -33,7 +40,11 @@ const navigation = useNavigation();
                   alignItems: "center",
                 }}
               >
-                <MaterialCommunityIcons name="menu" size={20} color="black" />
+                <MaterialCommunityIcons
+                  name="menu"
+                  size={20}
+                  color={isDarkMode ? "white" : "black"}
+                />
               </TouchableOpacity>
             </View>
 
@@ -52,9 +63,9 @@ const navigation = useNavigation();
               }}
             >
               <TouchableOpacity
-              onPress={() =>navigation.navigate("Discover")} 
+                onPress={() => navigation.navigate("Discover")}
                 style={{
-                  backgroundColor: "white",
+                  backgroundColor: isDarkMode ? "#212529" : "white",
                   height: responsiveHeight(4.7),
                   width: responsiveHeight(4.7),
                   borderRadius: responsiveHeight(2.5),
@@ -62,11 +73,15 @@ const navigation = useNavigation();
                   alignItems: "center",
                 }}
               >
-                <Ionicons name="search" size={20} color="black" />
+                <Ionicons
+                  name="search"
+                  size={20}
+                  color={isDarkMode ? "white" : "black"}
+                />
               </TouchableOpacity>
               <TouchableOpacity
                 style={{
-                  backgroundColor: "white",
+                  backgroundColor: isDarkMode ? "#212529" : "white",
                   height: responsiveHeight(4.7),
                   width: responsiveHeight(4.7),
                   borderRadius: responsiveHeight(2.5),
@@ -74,7 +89,11 @@ const navigation = useNavigation();
                   alignItems: "center",
                 }}
               >
-                <Fontisto name="bell" size={20} color="black" />
+                <Fontisto
+                  name="bell"
+                  size={20}
+                  color={isDarkMode ? "white" : "black"}
+                />
                 {/* Red dot */}
                 <View
                   style={{

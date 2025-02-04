@@ -2,30 +2,36 @@ import { View, Text, TouchableOpacity, Switch } from 'react-native'
 import React, { useState } from 'react'
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
 import { Ionicons , MaterialIcons} from "react-native-vector-icons";
-import { useColorScheme } from 'nativewind';
+import { useTheme } from '../ThemeProvider';
 
 const Settings = () => {
-const [isEnabled, setIsEnabled] = useState(false)
-const {colorScheme, toggleColorScheme} = useColorScheme
-const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+const [isEnabled, setIsEnabled] = useState(false);
+const toggleSwitch = () => setIsEnabled((previousState) => !previousState)
+const { isDarkMode, toggleTheme } = useTheme();
+
   return (
     <View
-      style={{ marginTop: responsiveHeight(1.6), padding: responsiveHeight(2) }}
+      style={{
+        marginTop: responsiveHeight(1.6),
+        padding: responsiveHeight(2),
+        backgroundColor:  isDarkMode ? "#212529" : "white",
+      }}
     >
-      <View style={{ height: responsiveHeight(40), backgroundColor: "" }}>
+      <View style={{ height: responsiveHeight(70), }}>
         <TouchableOpacity
           style={{
             flexDirection: "row",
             justifyContent: "space-between",
-            backgroundColor: "white",
+            backgroundColor: isDarkMode ? "#212529" : "white",
             paddingHorizontal: responsiveHeight(3),
-            paddingVertical: responsiveHeight(2),
-            borderBottomColor: "grey",
+            paddingVertical: responsiveHeight(2.6),
+            borderBottomColor: "#dee2e6",
             borderBottomWidth: 1,
+            marginTop:responsiveHeight(5)
           }}
         >
           <Text
-            style={{ fontSize: responsiveFontSize(1.7), fontWeight: "500" }}
+            style={{ fontSize: responsiveFontSize(2), fontWeight: "500" , color: isDarkMode ? "white" : "black", }}
           >
             About
           </Text>
@@ -36,15 +42,19 @@ const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
           style={{
             flexDirection: "row",
             justifyContent: "space-between",
-            backgroundColor: "white",
+            backgroundColor: isDarkMode ? "#212529" : "white",
             paddingHorizontal: responsiveHeight(3),
-            paddingVertical: responsiveHeight(2),
-            borderBottomColor: "grey",
+            paddingVertical: responsiveHeight(2.6),
+            borderBottomColor: "#dee2e6",
             borderBottomWidth: 1,
           }}
         >
           <Text
-            style={{ fontSize: responsiveFontSize(1.7), fontWeight: "500" }}
+            style={{
+              fontSize: responsiveFontSize(2),
+              fontWeight: "500",
+              color: isDarkMode ? "white" : "black",
+            }}
           >
             Send Feedback
           </Text>
@@ -55,15 +65,15 @@ const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
           style={{
             flexDirection: "row",
             justifyContent: "space-between",
-            backgroundColor: "white",
+            backgroundColor: isDarkMode ? "#212529" : "white",
             paddingHorizontal: responsiveHeight(3),
-            paddingVertical: responsiveHeight(2),
-            borderBottomColor: "grey",
+            paddingVertical: responsiveHeight(2.6),
+            borderBottomColor: "#dee2e6",
             borderBottomWidth: 1,
           }}
         >
           <Text
-            style={{ fontSize: responsiveFontSize(1.7), fontWeight: "500" }}
+            style={{ fontSize: responsiveFontSize(2), fontWeight: "500",  color: isDarkMode ? "white" : "black", }}
           >
             Privacy Policy
           </Text>
@@ -74,15 +84,15 @@ const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
           style={{
             flexDirection: "row",
             justifyContent: "space-between",
-            backgroundColor: "white",
+            backgroundColor: isDarkMode ? "#212529" : "white",
             paddingHorizontal: responsiveHeight(3),
-            paddingVertical: responsiveHeight(2),
-            borderBottomColor: "grey",
+            paddingVertical: responsiveHeight(2.6),
+            borderBottomColor: "#dee2e6",
             borderBottomWidth: 1,
           }}
         >
           <Text
-            style={{ fontSize: responsiveFontSize(1.7), fontWeight: "500" }}
+            style={{ fontSize: responsiveFontSize(2), fontWeight: "500",  color: isDarkMode ? "white" : "black", }}
           >
             Terms of Use
           </Text>
@@ -90,27 +100,27 @@ const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
         </TouchableOpacity>
         {/* Mode */}
         <TouchableOpacity
-        onPress={toggleSwitch}
+          onPress={toggleTheme}
           style={{
             flexDirection: "row",
             justifyContent: "space-between",
-            backgroundColor: "white",
+            backgroundColor: isDarkMode ? "#212529" : "white",
             paddingHorizontal: responsiveHeight(3),
-            paddingVertical: responsiveHeight(2),
-            borderBottomColor: "grey",
+            paddingVertical: responsiveHeight(2.6),
+            borderBottomColor: "#dee2e6",
             borderBottomWidth: 1,
           }}
         >
           <Text
-            style={{ fontSize: responsiveFontSize(1.7), fontWeight: "500" }}
+            style={{ fontSize: responsiveFontSize(2), fontWeight: "500",  color: isDarkMode ? "white" : "black", }}
           >
             Dark Mode
           </Text>
           <Switch
             trackColor={{ false: "#767577", true: "#3e3e3e" }}
-            thumbColor={isEnabled ? "#bde0fe" : "#f4f3f4"}
-            onValueChange={toggleSwitch}
-            value={isEnabled}
+            thumbColor={isDarkMode ? "black" : "#f4f3f4"}
+            onValueChange={toggleTheme}
+            value={isDarkMode}
             style={{
               marginBottom: responsiveHeight(-3.5),
               marginRight: responsiveWidth(-3),
@@ -123,15 +133,19 @@ const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
           style={{
             flexDirection: "row",
             justifyContent: "space-between",
-            backgroundColor: "white",
+            backgroundColor: isDarkMode ? "#212529" : "white",
             paddingHorizontal: responsiveHeight(3),
-            paddingVertical: responsiveHeight(2),
-            borderBottomColor: "grey",
+            paddingVertical: responsiveHeight(2.6),
+            borderBottomColor: "#dee2e6",
             borderBottomWidth: 1,
           }}
         >
           <Text
-            style={{ fontSize: responsiveFontSize(1.7), fontWeight: "500" , color:"red"}}
+            style={{
+              fontSize: responsiveFontSize(2),
+              fontWeight: "500",
+              color: "red",
+            }}
           >
             Logout
           </Text>
