@@ -3,10 +3,10 @@ import React, { useState } from 'react'
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
 import { Ionicons , MaterialIcons} from "react-native-vector-icons";
 import { useTheme } from '../ThemeProvider';
+import { useNavigation } from '@react-navigation/native';
 
 const Settings = () => {
-const [isEnabled, setIsEnabled] = useState(false);
-const toggleSwitch = () => setIsEnabled((previousState) => !previousState)
+const navigation = useNavigation();
 const { isDarkMode, toggleTheme } = useTheme();
 
   return (
@@ -130,6 +130,7 @@ const { isDarkMode, toggleTheme } = useTheme();
         </TouchableOpacity>
         {/* Logout */}
         <TouchableOpacity
+        onPress={() =>navigation.navigate("Welcome")}
           style={{
             flexDirection: "row",
             justifyContent: "space-between",
