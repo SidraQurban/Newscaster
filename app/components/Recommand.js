@@ -16,24 +16,8 @@ const getTopHeadline = async () => {
   setNewsList(result.articles);
 };
   return (
-    <View style={{ marginTop: responsiveHeight(3) }}>
-      {/* text */}
-      <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-        <Text style={{ fontSize: responsiveFontSize(2.5), fontWeight: "bold" }}>
-          Recommandation
-        </Text>
-        <TouchableOpacity onPress={()=> navigation.navigate("Discover")} >
-        <Text
-          style={{
-            fontSize: responsiveFontSize(2),
-            color: "#979dac",
-            fontWeight: "600",
-          }}
-        >
-          Show More
-        </Text>
-        </TouchableOpacity>
-      </View>
+    <View style={{ marginTop: responsiveHeight(1) }}>
+     
       {/* news list */}
       <View>
         <FlatList

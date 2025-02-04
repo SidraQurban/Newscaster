@@ -20,7 +20,6 @@ setNewsList(result.articles)
 
   return (
     <View style={{ padding: responsiveWidth(1) }}>
-    
       {/* text */}
       <View
         style={{
@@ -114,9 +113,31 @@ setNewsList(result.articles)
           )}
         />
       </View>
+      {/* text */}
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+          marginTop: responsiveHeight(3),
+        }}
+      >
+        <Text style={{ fontSize: responsiveFontSize(2.5), fontWeight: "bold" }}>
+          Recommandation
+        </Text>
+        <TouchableOpacity onPress={() => navigation.navigate("Discover")}>
+          <Text
+            style={{
+              fontSize: responsiveFontSize(2),
+              color: "#979dac",
+              fontWeight: "600",
+            }}
+          >
+            Show More
+          </Text>
+        </TouchableOpacity>
+      </View>
       {/* Recommendation */}
       <Recommand />
-      <View></View>
     </View>
   );
 }
