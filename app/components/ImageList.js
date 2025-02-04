@@ -51,6 +51,7 @@ setNewsList(result.articles)
           showsHorizontalScrollIndicator={false}
           renderItem={({ item }) => (
             <TouchableOpacity
+            onPress={() => navigation.navigate("Detail")}
               style={{
                 marginTop: responsiveHeight(2),
                 width: responsiveWidth(80),
