@@ -2,9 +2,11 @@ import { View, Text, TouchableOpacity, Switch } from 'react-native'
 import React, { useState } from 'react'
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
 import { Ionicons , MaterialIcons} from "react-native-vector-icons";
+import { useColorScheme } from 'nativewind';
 
 const Settings = () => {
 const [isEnabled, setIsEnabled] = useState(false)
+const {colorScheme, toggleColorScheme} = useColorScheme
 const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
   return (
     <View
@@ -106,7 +108,7 @@ const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
           </Text>
           <Switch
             trackColor={{ false: "#767577", true: "#3e3e3e" }}
-            thumbColor={isEnabled ? "green" : "#f4f3f4"}
+            thumbColor={isEnabled ? "#bde0fe" : "#f4f3f4"}
             onValueChange={toggleSwitch}
             value={isEnabled}
             style={{
