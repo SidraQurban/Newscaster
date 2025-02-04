@@ -7,9 +7,9 @@ import ImageList from "../components/ImageList";
 
 const HomeScreen = () => {
   return (
-    <View style={{ padding: responsiveWidth(2) }}>
+    <View style={{ padding: responsiveWidth(3) }}>
       <FlatList
-        ListHeaderComponent={(
+        ListHeaderComponent={
           <SafeAreaView>
             <View
               style={{
@@ -87,8 +87,8 @@ const HomeScreen = () => {
               </TouchableOpacity>
             </View>
           </SafeAreaView>
-        )}
-        ListFooterComponent={<ImageList />} 
+        }
+        ListFooterComponent={<ImageList />}
         showsVerticalScrollIndicator={false}
       />
     </View>

@@ -40,7 +40,7 @@ const getTopHeadline = async () => {
           data={newsList}
           showsVerticalScrollIndicator={false}
           renderItem={({ item }) => (
-            <TouchableOpacity onPress={()=>navigation.navigate("Detail")}>
+            <TouchableOpacity onPress={()=>navigation.navigate("Detail", {news:item})}>
               <Image
                 source={{ uri: item.urlToImage }}
                 style={{
@@ -70,7 +70,7 @@ const getTopHeadline = async () => {
                     fontSize: responsiveFontSize(2),
                   }}
                 >
-                  {item.title}
+                  {item.title.split(" - ")[0]}
                 </Text>
                 <Text
                   style={{
@@ -78,7 +78,7 @@ const getTopHeadline = async () => {
                     fontSize: responsiveFontSize(1.5),
                   }}
                 >
-                  {item.publishedAt}
+                  {item.publishedAt.slice(0, 10)}
                 </Text>
               </View>
             </TouchableOpacity>

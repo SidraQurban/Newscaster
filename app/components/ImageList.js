@@ -19,7 +19,8 @@ setNewsList(result.articles)
 }
 
   return (
-    <View style={{ padding: responsiveWidth(2) }}>
+    <View style={{ padding: responsiveWidth(1) }}>
+    
       {/* text */}
       <View
         style={{
@@ -51,7 +52,7 @@ setNewsList(result.articles)
           showsHorizontalScrollIndicator={false}
           renderItem={({ item }) => (
             <TouchableOpacity
-            onPress={() => navigation.navigate("Detail")}
+              onPress={() => navigation.navigate("Detail", { news: item })}
               style={{
                 marginTop: responsiveHeight(2),
                 width: responsiveWidth(80),
