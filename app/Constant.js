@@ -19,4 +19,8 @@ export const categories = [
         id: 5,
         name: 'Technology'
     },
+    {
+        id: 6,
+        name: 'Netflix'
+    },
 ]

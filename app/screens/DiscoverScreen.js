@@ -18,6 +18,8 @@ const DiscoverScreen = () => {
   const [text, setText] = useState(""); 
   const [newsList, setNewsList] = useState([]);
   const [filteredNewsList, setFilteredNewsList] = useState([]);
+    const [active, setActive] = useState(1);
+  
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -39,9 +41,13 @@ const DiscoverScreen = () => {
     if (text === "") {
       setFilteredNewsList(newsList); // If search is empty, show all articles
     } else {
-      const filtered = newsList.filter(item => 
-        (item.title && item.title.toLowerCase().includes(text.toLowerCase())) || // Filter based on title
-        (item.source && item.source.name && item.source.name.toLowerCase().includes(text.toLowerCase())) // Filter based on source name
+      const filtered = newsList.filter(
+        (item) =>
+          (item.title &&
+            item.title.toLowerCase().includes(text.toLowerCase())) || // Filter based on title
+          (item.source &&
+            item.source.name &&
+            item.source.name.toLowerCase().includes(text.toLowerCase())) // Filter based on source name
       );
       setFilteredNewsList(filtered); // Set the filtered news list
     }
@@ -132,14 +138,62 @@ const DiscoverScreen = () => {
                   }}
                 />
               </View>
+               {/* Category List */}
+                    <FlatList
+                      data={categories}
+                      horizontal
+                      showsHorizontalScrollIndicator={false}
+                      renderItem={({ item }) => (
+                        <TouchableOpacity
+                          onPress={() => { 
+                            setActive(item.id); 
+                            selectCategory(item.name);
+                          }}
+                          style={{
+                            marginTop: responsiveHeight(2.5),
+                            marginRight: responsiveWidth(2),
+                            backgroundColor: item.id === active ? "#2196f3" : "#e9ecef",
+                            height: responsiveHeight(5),
+                            alignItems: "center",
+                            justifyContent: "center",
+                            width: responsiveHeight(11),
+                            borderRadius: responsiveHeight(4),
+                          }}
+                        >
+                          <Text
+                            style={{
+                              color: item.id === active ? "#fff" : "#979dac",
+                              fontSize: responsiveFontSize(1.8),
+                            }}
+                          >
+                            {item.name}
+                          </Text>
+                        </TouchableOpacity>
+                      )}
+                    />
             </View>
-            {/* Display filtered categories and news */}
-            {loading?<ActivityIndicator color="blue" size="30"/>: 
-            <CategoryData 
-              selectCategory={getNewsByCategory} 
-              newsList={filteredNewsList} // Pass the filtered list
-              setNewsList={setNewsList} 
-            />}
+
+            {/* Show loading or the filtered data */}
+            {loading ? (
+              <ActivityIndicator color="blue" size="30" />
+            ) : filteredNewsList.length === 0 ? (
+              <Text
+                style={{
+                  fontSize: responsiveFontSize(2),
+                  color: "gray",
+                  textAlign: "center",
+                  marginTop: responsiveHeight(3),
+                }}
+              >
+                Result not found
+              </Text>
+            ) : (
+              <CategoryData
+                selectCategory={getNewsByCategory}
+                newsList={filteredNewsList} // Pass the filtered list
+                setNewsList={setNewsList}
+              />
+            )}
           </>
         }
       />

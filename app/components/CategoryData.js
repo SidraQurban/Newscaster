@@ -2,45 +2,13 @@ import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native';
 import React, { useState } from 'react';
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions';
 import { categories } from '../Constant';
+import { useNavigation } from '@react-navigation/native';
 
-const CategoryData = ({ selectCategory, newsList }) => {
-  const [active, setActive] = useState(1);
+const CategoryData = ({  newsList }) => {
+  const navigation = useNavigation()
 
   return (
     <View style={{ marginTop: responsiveHeight(1) }}>
-      {/* Category List */}
-      <FlatList
-        data={categories}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            onPress={() => { 
-              setActive(item.id); 
-              selectCategory(item.name);
-            }}
-            style={{
-              marginTop: responsiveHeight(2.5),
-              marginRight: responsiveWidth(2),
-              backgroundColor: item.id === active ? "#2196f3" : "#e9ecef",
-              height: responsiveHeight(5),
-              alignItems: "center",
-              justifyContent: "center",
-              width: responsiveHeight(11),
-              borderRadius: responsiveHeight(4),
-            }}
-          >
-            <Text
-              style={{
-                color: item.id === active ? "#fff" : "#979dac",
-                fontSize: responsiveFontSize(1.8),
-              }}
-            >
-              {item.name}
-            </Text>
-          </TouchableOpacity>
-        )}
-      />
       
       {/* News List */}
       <FlatList
