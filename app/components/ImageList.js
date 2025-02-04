@@ -4,8 +4,10 @@ import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-nat
 import GlobalApi from '../services/GlobalApi'
 import { Image } from 'react-native'
 import Recommand from './Recommand'
+import { useNavigation } from '@react-navigation/native'
 
 const ImageList = () => {
+const navigation = useNavigation();
 const [newsList, setNewsList] = useState([])    
 useEffect (() => {
 getTopHeadline()
@@ -29,15 +31,17 @@ setNewsList(result.articles)
         <Text style={{ fontSize: responsiveFontSize(2.5), fontWeight: "bold" }}>
           Breaking News
         </Text>
-        <Text
-          style={{
-            fontSize: responsiveFontSize(2),
-            color: "#979dac",
-            fontWeight: "600",
-          }}
-        >
-          Show More
-        </Text>
+        <TouchableOpacity onPress={() => navigation.navigate("Discover")}>
+          <Text
+            style={{
+              fontSize: responsiveFontSize(2),
+              color: "#979dac",
+              fontWeight: "600",
+            }}
+          >
+            Show More
+          </Text>
+        </TouchableOpacity>
       </View>
       {/* images */}
       <View>
@@ -100,7 +104,6 @@ setNewsList(result.articles)
                   color: "white",
                   marginLeft: responsiveWidth(2),
                   fontWeight: "600",
-                 
                 }}
               >
                 {item.title}
@@ -110,10 +113,8 @@ setNewsList(result.articles)
         />
       </View>
       {/* Recommendation */}
-      <Recommand/>
-      <View>
-
-      </View>
+      <Recommand />
+      <View></View>
     </View>
   );
 }
