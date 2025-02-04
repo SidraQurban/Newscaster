@@ -1,7 +1,7 @@
 export const categories = [
     {
         id: 1,
-        name: 'All'
+        name: 'Latest'
     },
     {
         id: 2,
@@ -13,10 +13,10 @@ export const categories = [
     },
     {
         id: 4,
-        name: 'Education'
+        name: 'Business'
     },
     {
         id: 5,
-        name: 'Technical'
+        name: 'Technology'
     },
 ]

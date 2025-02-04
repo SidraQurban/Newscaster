@@ -11,7 +11,14 @@ const navigation = useNavigation();
 const [newsList, setNewsList] = useState([])    
 useEffect (() => {
 getTopHeadline()
+getNewsByCategory('Politic')
 },[])
+
+const getNewsByCategory =async (category) =>{
+  const result = (await GlobalApi.getNewsByCategory(category)).data;
+  setNewsList(result.articles);
+  console.log(result)
+}
 
 const getTopHeadline =async () =>{
 const result = (await GlobalApi.getTopHeadline).data;

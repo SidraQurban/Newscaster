@@ -1,7 +1,8 @@
 import { 
-  View, Text, TouchableOpacity, TextInput, FlatList 
+  View, Text, TouchableOpacity, TextInput, FlatList, 
+  ActivityIndicator
 } from 'react-native';
-import React, { act, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { 
   responsiveFontSize, responsiveHeight, responsiveWidth 
@@ -9,13 +10,43 @@ import {
 import { Ionicons } from "react-native-vector-icons";
 import { useNavigation } from '@react-navigation/native';
 import { categories } from '../Constant';
-import Recommand from '../components/Recommand';
+import GlobalApi from '../services/GlobalApi';
+import CategoryData from '../components/CategoryData';
 
 const DiscoverScreen = () => {
   const navigation = useNavigation();
-  const [text, setText] = useState("");
+  const [text, setText] = useState(""); 
+  const [newsList, setNewsList] = useState([]);
+  const [filteredNewsList, setFilteredNewsList] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const [active, setActive] = useState(1);
+  useEffect(() => {
+    getNewsByCategory('Sports');
+  }, []);
+
+  // Fetch news based on category
+  const getNewsByCategory = async (category) => {
+    setLoading(true); 
+    const result = (await GlobalApi.getNewsByCategory(category)).data;
+    setNewsList(result.articles);
+    setFilteredNewsList(result.articles); // Set initial filtered list
+    setLoading(false);
+  };
+
+  // Filter news list based on search text
+  const handleSearch = (text) => {
+    setText(text);
+    if (text === "") {
+      setFilteredNewsList(newsList); // If search is empty, show all articles
+    } else {
+      const filtered = newsList.filter(item => 
+        (item.title && item.title.toLowerCase().includes(text.toLowerCase())) || // Filter based on title
+        (item.source && item.source.name && item.source.name.toLowerCase().includes(text.toLowerCase())) // Filter based on source name
+      );
+      setFilteredNewsList(filtered); // Set the filtered news list
+    }
+  };
+
   return (
     <SafeAreaView style={{ padding: responsiveWidth(3) }}>
       <FlatList
@@ -50,7 +81,7 @@ const DiscoverScreen = () => {
               </TouchableOpacity>
             </View>
 
-            {/*Discover Section */}
+            {/* Discover Section */}
             <View
               style={{
                 padding: responsiveWidth(1),
@@ -72,7 +103,7 @@ const DiscoverScreen = () => {
               </Text>
             </View>
 
-            {/*  Search Bar */}
+            {/* Search Bar */}
             <View style={{ marginTop: responsiveHeight(3) }}>
               <View
                 style={{
@@ -94,7 +125,7 @@ const DiscoverScreen = () => {
                 <TextInput
                   placeholder="Search"
                   value={text}
-                  onChangeText={setText}
+                  onChangeText={handleSearch} // Update search text and filter list
                   style={{
                     fontSize: responsiveFontSize(2),
                     flex: 1,
@@ -102,44 +133,13 @@ const DiscoverScreen = () => {
                 />
               </View>
             </View>
-
-            {/*  Category List */}
-            <FlatList
-              data={categories}
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              renderItem={({ item }) => (
-                <TouchableOpacity
-                onPress={() => setActive(item.id)}
-                
-                  style={{
-                    marginTop: responsiveHeight(2.5),
-                    marginRight: responsiveWidth(2),
-                    backgroundColor: item.id === active ? "#2196f3" : "#e9ecef",
-
-                    height: responsiveHeight(5),
-                    alignItems: "center",
-                    justifyContent: "center",
-                    width: responsiveHeight(11),
-                    borderRadius: responsiveHeight(4),
-                  }}
-                >
-                  <Text
-                    style={{
-                      color: item.id === active ? "#fff" : "#979dac",
-                      fontSize: responsiveFontSize(1.8),
-                    }}
-                  >
-                    {item.name}
-                  </Text>
-                </TouchableOpacity>
-              )}
-            />
-
-            {/* Recommended News Section */}
-            <View style={{ marginTop: responsiveHeight(1) }}>
-              <Recommand />
-            </View>
+            {/* Display filtered categories and news */}
+            {loading?<ActivityIndicator color="blue" size="30"/>: 
+            <CategoryData 
+              selectCategory={getNewsByCategory} 
+              newsList={filteredNewsList} // Pass the filtered list
+              setNewsList={setNewsList} 
+            />}
           </>
         }
       />
