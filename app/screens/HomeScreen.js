@@ -4,8 +4,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { MaterialCommunityIcons, Ionicons, Fontisto } from "react-native-vector-icons";
 import { responsiveHeight, responsiveWidth } from "react-native-responsive-dimensions";
 import ImageList from "../components/ImageList";
+import { useNavigation } from "@react-navigation/native";
 
 const HomeScreen = () => {
+const navigation = useNavigation();
   return (
     <View style={{ padding: responsiveWidth(3) }}>
       <FlatList
@@ -50,6 +52,7 @@ const HomeScreen = () => {
               }}
             >
               <TouchableOpacity
+              onPress={() =>navigation.navigate("Discover")} 
                 style={{
                   backgroundColor: "white",
                   height: responsiveHeight(4.7),
