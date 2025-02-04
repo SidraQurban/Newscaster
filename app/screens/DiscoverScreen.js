@@ -23,7 +23,7 @@ const DiscoverScreen = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getNewsByCategory('Sports');
+    getNewsByCategory('Business');
   }, []);
 
   // Fetch news based on category
@@ -145,10 +145,12 @@ const DiscoverScreen = () => {
                       showsHorizontalScrollIndicator={false}
                       renderItem={({ item }) => (
                         <TouchableOpacity
-                          onPress={() => { 
-                            setActive(item.id); 
-                            selectCategory(item.name);
-                          }}
+                        onPress={() => { 
+                          if (item && item.name) {
+                            setActive(item.id);
+                            getNewsByCategory(item.name);
+                          }
+                        }}
                           style={{
                             marginTop: responsiveHeight(2.5),
                             marginRight: responsiveWidth(2),
@@ -189,7 +191,7 @@ const DiscoverScreen = () => {
               </Text>
             ) : (
               <CategoryData
-                selectCategory={getNewsByCategory}
+                // selectCategory={getNewsByCategory}
                 newsList={filteredNewsList} // Pass the filtered list
                 setNewsList={setNewsList}
               />

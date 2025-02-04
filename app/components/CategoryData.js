@@ -5,6 +5,9 @@ import { categories } from '../Constant';
 import { useNavigation } from '@react-navigation/native';
 
 const CategoryData = ({  newsList }) => {
+    if (!newsList || !Array.isArray(newsList)) {
+        return <Text>No news available</Text>;
+      }
   const navigation = useNavigation()
 
   return (
