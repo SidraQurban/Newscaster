@@ -1,19 +1,19 @@
 export const categories = [
     {
         id: 1,
-        name: 'Latest'
+        name: 'All'
     },
     {
         id: 2,
-        name: 'Politic'
+        name: 'Science'
     },
     {
         id: 3,
-        name: 'Sport'
+        name: 'Politics'
     },
     {
         id: 4,
-        name: 'Business'
+        name: 'Sports'
     },
     {
         id: 5,
@@ -21,6 +21,10 @@ export const categories = [
     },
     {
         id: 6,
-        name: 'Netflix'
+        name: 'Business'
+    },
+    {
+        id: 7,
+        name: 'Entertainment'
     },
 ]

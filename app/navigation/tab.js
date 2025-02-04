@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "../screens/HomeScreen";
 import DiscoverScreen from "../screens/DiscoverScreen";
 import SaveScreen from "../screens/SaveScreen";
-import ProfileScreen from "../screens/ProfileScreen";
+import SettingsScreen from "../screens/SettingsScreen";
 import {
   responsiveFontSize,
   responsiveHeight,
@@ -136,8 +136,8 @@ const Tabs = () => {
         }}
       />
       <Tab.Screen
-        name="Profile"
-        component={ProfileScreen}
+        name="Settings"
+        component={SettingsScreen}
         options={{
           tabBarButton: CustomTabButton,
           tabBarIcon: ({ focused }) => (
@@ -149,8 +149,8 @@ const Tabs = () => {
                 width: responsiveWidth(20),
               }}
             >
-              <FontAwesome5
-                name="user-alt"
+              <Ionicons
+                name="settings"
                 size={25}
                 color={focused ? "#2196f3" : "#979dac"}
               />
@@ -162,7 +162,7 @@ const Tabs = () => {
                   fontWeight: "600",
                 }}
               >
-                Profile
+                Settings
               </Text>
             </View>
           ),
