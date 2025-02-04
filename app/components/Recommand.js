@@ -22,6 +22,7 @@ const getTopHeadline = async () => {
         <Text style={{ fontSize: responsiveFontSize(2.5), fontWeight: "bold" }}>
           Recommandation
         </Text>
+        <TouchableOpacity onPress={()=> navigation.navigate("Discover")} >
         <Text
           style={{
             fontSize: responsiveFontSize(2),
@@ -31,6 +32,7 @@ const getTopHeadline = async () => {
         >
           Show More
         </Text>
+        </TouchableOpacity>
       </View>
       {/* news list */}
       <View>
