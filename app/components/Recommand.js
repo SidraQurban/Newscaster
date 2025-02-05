@@ -3,10 +3,12 @@ import React, { useEffect, useState } from 'react'
 import GlobalApi from '../services/GlobalApi'
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
 import { useNavigation } from '@react-navigation/native'
+import { useTheme } from '../ThemeProvider'
 
 const Recommand = () => {
 const navigation = useNavigation();
-const [newsList, setNewsList] = useState([])    
+const [newsList, setNewsList] = useState([]);
+const {isDarkMode} = useTheme();    
 useEffect (() => {
 getTopHeadline()
 },[])
@@ -52,6 +54,7 @@ const getTopHeadline = async () => {
                     marginTop: responsiveHeight(1),
                     fontWeight: "600",
                     fontSize: responsiveFontSize(2),
+                    color: isDarkMode? "#e9ecef" : "black",
                   }}
                 >
                   {item.title.split(" - ")[0]}
@@ -60,6 +63,8 @@ const getTopHeadline = async () => {
                   style={{
                     marginTop: responsiveHeight(2),
                     fontSize: responsiveFontSize(1.5),
+                    color: isDarkMode? "#e9ecef" : "black",
+
                   }}
                 >
                   {item.publishedAt.slice(0, 10)}

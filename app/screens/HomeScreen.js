@@ -22,7 +22,7 @@ const {isDarkMode} = useTheme();
           <SafeAreaView>
             <View
               style={{
-                backgroundColor: "#dee2e6",
+                backgroundColor: isDarkMode? "#343a40" :"#dee2e6",
                 height: responsiveHeight(5),
                 width: responsiveHeight(5),
                 borderRadius: responsiveHeight(2.8),
@@ -54,7 +54,7 @@ const {isDarkMode} = useTheme();
                 gap: responsiveWidth(1),
                 marginTop: responsiveHeight(-5),
                 marginLeft: responsiveWidth(72),
-                backgroundColor: "#dee2e6",
+                backgroundColor: isDarkMode? "#343a40" :"#dee2e6",
                 height: responsiveHeight(5),
                 width: responsiveHeight(11),
                 borderRadius: responsiveHeight(2.8),
