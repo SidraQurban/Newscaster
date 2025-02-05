@@ -1,12 +1,32 @@
 import { View, Text, FlatList } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
 import { useTheme } from '../ThemeProvider'
 import { Image } from 'react-native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const SaveScreen = () => {
-  const {isDarkMode} = useTheme()
+  const {isDarkMode} = useTheme();
+  const [bookmarkNews, setBookmarkNews] = useState([]);
+  const[isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    fetchBookmark();
+   
+  }, []);
+  const fetchBookmark = async() =>{
+    await AsyncStorage.getItem('bookmark').then((token) =>{
+      const res = JSON.parse(token);
+      if ( res ){
+        console.log("Bookmark res",res);
+        let query_string = res.join(',')
+          console.log("query_string:", query_string)
+        
+      }
+    })
+  }
+
   return (
     <View
       style={{
