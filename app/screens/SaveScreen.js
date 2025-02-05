@@ -1,42 +1,16 @@
 import { View, Text, FlatList } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
 import { useTheme } from '../ThemeProvider'
 import { Image } from 'react-native'
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import GlobalApi from '../services/GlobalApi'
 
 const SaveScreen = () => {
-  const {isDarkMode} = useTheme();
-  const [bookmarkNews, setBookmarkNews] = useState([]);
-  const[isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    fetchBookmark();
-   
-  }, []);
-  const fetchBookmark = async() =>{
-    await AsyncStorage.getItem('bookmark').then(async(token) =>{
-      const res = JSON.parse(token);
-      if ( res ){
-        console.log("Bookmark res",res);
-        let query_string = res.join(',')
-          console.log("query_string:", query_string);
-           const result = (await GlobalApi.getTopHeadline).data;
-           setBookmarkNews(result.articles);
-           setIsLoading(false);
-        } else{
-          setBookmarkNews([]);
-          setIsLoading(false);
-        }
-    })
-  }
-
+  const {isDarkMode} = useTheme()
   return (
     <View
       style={{
-        backgroundColor: isDarkMode ? "#212529" : "#f8f9fa",
+        backgroundColor: isDarkMode ? "#212529" : "neutral",
         height: isDarkMode ? responsiveHeight(100) : "auto",
       }}
     >
@@ -60,7 +34,7 @@ const SaveScreen = () => {
         </Text>
       </View>
       {/* body */}
-     
+
       <View style={{ flexDirection: "row" }}>
         <Image
           source={require("../../assets/welcome1.png")}
