@@ -10,7 +10,7 @@ const SaveScreen = () => {
   return (
     <View
       style={{
-        backgroundColor: isDarkMode ? "#212529" : "neutral",
+        backgroundColor: isDarkMode ? "#212529" : "#f8f9fa",
         height: isDarkMode ? responsiveHeight(100) : "auto",
       }}
     >

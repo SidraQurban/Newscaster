@@ -5,10 +5,12 @@ import GlobalApi from '../services/GlobalApi';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions';
 import{ Ionicons,Entypo,MaterialIcons} from "react-native-vector-icons"
+import { useTheme } from '../ThemeProvider';
 
 const DetailScreen = () => {
 const news = useRoute().params.news;
 const navigation = useNavigation();
+const { isDarkMode } = useTheme();
 useEffect(() => {
   console.log(news);
 }, []);
@@ -23,7 +25,12 @@ const Readmore = () => {
   Linking.openURL(news.url);
 };
   return (
-    <View style={{ padding: responsiveWidth(3) }}>
+    <View
+      style={{
+        padding: responsiveWidth(3),
+        backgroundColor: isDarkMode ? "#212529" : "#f8f9fa",
+      }}
+    >
       <SafeAreaView>
         {/* goback icon */}
         <View
@@ -176,13 +183,14 @@ const Readmore = () => {
       {/* content */}
       <View style={{ marginTop: responsiveHeight(2) }}>
         <Text style={{ fontSize: responsiveFontSize(2.2), fontWeight: "500" }}>
-          {news.content.split("[",)[0]}
+          {news.content.split("[")[0]}
         </Text>
       </View>
       {/* Read more */}
-      <TouchableOpacity 
-      onPress={() =>Readmore()}
-      style={{ marginTop: responsiveHeight(1) }}>
+      <TouchableOpacity
+        onPress={() => Readmore()}
+        style={{ marginTop: responsiveHeight(1) }}
+      >
         <Text
           style={{
             fontSize: responsiveFontSize(2.2),

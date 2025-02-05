@@ -12,15 +12,16 @@ import { useNavigation } from '@react-navigation/native';
 import { categories } from '../Constant';
 import GlobalApi from '../services/GlobalApi';
 import CategoryData from '../components/CategoryData';
+import { useTheme } from '../ThemeProvider';
 
 const DiscoverScreen = () => {
   const navigation = useNavigation();
   const [text, setText] = useState(""); 
   const [newsList, setNewsList] = useState([]);
   const [filteredNewsList, setFilteredNewsList] = useState([]);
-    const [active, setActive] = useState(1);
-  
+    const [active, setActive] = useState(1);  
   const [loading, setLoading] = useState(true);
+  const {isDarkMode} = useTheme();
 
   useEffect(() => {
     getNewsByCategory('Business');
@@ -54,7 +55,12 @@ const DiscoverScreen = () => {
   };
 
   return (
-    <SafeAreaView style={{ padding: responsiveWidth(3) }}>
+    <SafeAreaView
+      style={{
+        padding: responsiveWidth(3),
+        backgroundColor: isDarkMode ? "#212529" : "#f8f9fa",
+      }}
+    >
       <FlatList
         data={categories}
         showsVerticalScrollIndicator={false}
@@ -64,7 +70,7 @@ const DiscoverScreen = () => {
             {/* Header */}
             <View
               style={{
-                backgroundColor: "#dee2e6",
+                backgroundColor: isDarkMode ? "#343a40" : "#dee2e6",
                 height: responsiveHeight(5),
                 width: responsiveHeight(5),
                 borderRadius: responsiveHeight(2.8),
@@ -75,7 +81,7 @@ const DiscoverScreen = () => {
               <TouchableOpacity
                 onPress={() => navigation.goBack()}
                 style={{
-                  backgroundColor: "white",
+                  backgroundColor: isDarkMode ? "#212529" : "white",
                   height: responsiveHeight(4.5),
                   width: responsiveHeight(4.5),
                   borderRadius: responsiveHeight(2.5),
@@ -83,7 +89,11 @@ const DiscoverScreen = () => {
                   alignItems: "center",
                 }}
               >
-                <Ionicons name="chevron-back" size={20} color="black" />
+                <Ionicons
+                  name="chevron-back"
+                  size={20}
+                  color={isDarkMode ? "white" : "black"}
+                />
               </TouchableOpacity>
             </View>
 
@@ -98,6 +108,7 @@ const DiscoverScreen = () => {
                 style={{
                   fontSize: responsiveFontSize(2.7),
                   fontWeight: "bold",
+                  color: isDarkMode ? "white" : "black",
                 }}
               >
                 Discover
@@ -138,41 +149,54 @@ const DiscoverScreen = () => {
                   }}
                 />
               </View>
-               {/* Category List */}
-                    <FlatList
-                      data={categories}
-                      horizontal
-                      showsHorizontalScrollIndicator={false}
-                      renderItem={({ item }) => (
-                        <TouchableOpacity
-                        onPress={() => { 
-                          if (item && item.name) {
-                            setActive(item.id);
-                            getNewsByCategory(item.name);
-                          }
-                        }}
-                          style={{
-                            marginTop: responsiveHeight(2.5),
-                            marginRight: responsiveWidth(2),
-                            backgroundColor: item.id === active ? "#2196f3" : "#e9ecef",
-                            height: responsiveHeight(5),
-                            alignItems: "center",
-                            justifyContent: "center",
-                            width: responsiveHeight(11),
-                            borderRadius: responsiveHeight(4),
-                          }}
-                        >
-                          <Text
-                            style={{
-                              color: item.id === active ? "#fff" : "#979dac",
-                              fontSize: responsiveFontSize(1.8),
-                            }}
-                          >
-                            {item.name}
-                          </Text>
-                        </TouchableOpacity>
-                      )}
-                    />
+              {/* Category List */}
+              <FlatList
+                data={categories}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                renderItem={({ item }) => (
+                  <TouchableOpacity
+                    onPress={() => {
+                      if (item && item.name) {
+                        setActive(item.id);
+                        getNewsByCategory(item.name);
+                      }
+                    }}
+                    style={{
+                      marginTop: responsiveHeight(2.5),
+                      marginRight: responsiveWidth(2),
+                      backgroundColor: isDarkMode
+                        ? item.id === active
+                          ? "#2196f3"
+                          : "#495057"
+                        : item.id === active
+                        ? "#2196f3"
+                        : "#e9ecef",
+
+                      height: responsiveHeight(5),
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: responsiveHeight(11),
+                      borderRadius: responsiveHeight(4),
+                    }}
+                  >
+                    <Text
+                      style={{
+                        color: isDarkMode
+                          ? item.id === active
+                            ? "#fff"
+                            : "#fff"
+                          : item.id === active
+                          ? "#fff"
+                          : "#979dac",
+                        fontSize: responsiveFontSize(1.8),
+                      }}
+                    >
+                      {item.name}
+                    </Text>
+                  </TouchableOpacity>
+                )}
+              />
             </View>
 
             {/* Show loading or the filtered data */}

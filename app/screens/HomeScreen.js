@@ -14,7 +14,7 @@ const {isDarkMode} = useTheme();
     <View
       style={{
         padding: responsiveWidth(3),
-        backgroundColor: isDarkMode ? "#212529" : "neutral",
+        backgroundColor: isDarkMode ? "#212529" : "#f8f9fa",
       }}
     >
       <FlatList
