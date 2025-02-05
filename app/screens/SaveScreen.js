@@ -1,5 +1,5 @@
 import { View, Text, FlatList } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
 import { useTheme } from '../ThemeProvider'
@@ -44,10 +44,12 @@ const SaveScreen = () => {
         </Text>
       </View>
       {/* body */}
-
-      <View style={{ flexDirection: "row" }}>
+      <FlatList 
+      data={newsList}
+      renderItem={({item}) => (
+        <View style={{ flexDirection: "row" }}>
         <Image
-          source={require("../../assets/welcome1.png")}
+          source={{uri:item.urlToImage}}
           style={{
             height: responsiveHeight(25),
             width: responsiveWidth(50),
@@ -64,7 +66,11 @@ const SaveScreen = () => {
         >
           hbjhnkjhbnm
         </Text>
-      </View>
+      </View> 
+      )}
+      />
+
+     
     </View>
   );
 }
