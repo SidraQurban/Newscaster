@@ -4,9 +4,19 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
 import { useTheme } from '../ThemeProvider'
 import { Image } from 'react-native'
+import GlobalApi from '../services/GlobalApi'
 
 const SaveScreen = () => {
   const {isDarkMode} = useTheme()
+  const [newsList, setNewsList] = useState([]);
+  useEffect (() => {
+    getTopHeadline()
+    },[])
+    
+    const getTopHeadline = async () => {
+      const result = (await GlobalApi.getTopHeadline).data;
+      setNewsList(result.articles);
+    };
   return (
     <View
       style={{
