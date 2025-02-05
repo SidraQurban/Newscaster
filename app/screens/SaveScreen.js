@@ -1,22 +1,12 @@
 import { View, Text, FlatList } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
 import { useTheme } from '../ThemeProvider'
 import { Image } from 'react-native'
-import GlobalApi from '../services/GlobalApi'
 
 const SaveScreen = () => {
   const {isDarkMode} = useTheme()
-  const [newsList, setNewsList] = useState([]);
-  useEffect (() => {
-    getTopHeadline()
-    },[])
-    
-    const getTopHeadline = async () => {
-      const result = (await GlobalApi.getTopHeadline).data;
-      setNewsList(result.articles);
-    };
   return (
     <View
       style={{
@@ -44,12 +34,10 @@ const SaveScreen = () => {
         </Text>
       </View>
       {/* body */}
-      <FlatList 
-      data={newsList}
-      renderItem={({item}) => (
-        <View style={{ flexDirection: "row" }}>
+
+      <View style={{ flexDirection: "row" }}>
         <Image
-          source={{uri:item.urlToImage}}
+          source={require("../../assets/welcome1.png")}
           style={{
             height: responsiveHeight(25),
             width: responsiveWidth(50),
@@ -66,11 +54,7 @@ const SaveScreen = () => {
         >
           hbjhnkjhbnm
         </Text>
-      </View> 
-      )}
-      />
-
-     
+      </View>
     </View>
   );
 }
