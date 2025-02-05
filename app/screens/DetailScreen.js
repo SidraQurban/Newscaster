@@ -2,7 +2,7 @@ import { View, Text, Image, TouchableOpacity, Share, Linking, ScrollView } from 
 import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import GlobalApi from '../services/GlobalApi';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native';
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions';
 import{ Ionicons,Entypo,MaterialIcons} from "react-native-vector-icons"
 import { useTheme } from '../ThemeProvider';
@@ -19,11 +19,13 @@ useEffect(() => {
   console.log(news);
 }, []);
 
-useEffect(() => {
-  if(!isLoading) {
-    renderBookmark(news.id);
-  }
-}, [isLoading]);
+useFocusEffect(
+  React.useCallback(() => {
+    if (news) {
+      renderBookmark(news.title); 
+    }
+  }, [news]) // This ensures that we check the bookmark state when the screen is focused
+);
 
 const shareNews = () => {
   Share.share({
@@ -34,43 +36,43 @@ const shareNews = () => {
 const Readmore = () => {
   Linking.openURL(news.url);
 };
-const saveBookmark = async (newsId) => {
+const saveBookmark = async (newsTitle) => {
   setBookmark(true);
   await AsyncStorage.getItem("bookmark").then((token) => {
     const res = JSON.parse(token);
     if (res !== null) {
-      let data = res.find((value) => value === newsId);
+      let data = res.find((value) => value === newsTitle);
       if (data == null) {
-        res.push(newsId);
+        res.push(newsTitle);
         AsyncStorage.setItem("bookmark", JSON.stringify(res));
         alert("News Saved!");
       }
     } else {
       let bookmark = [];
-      bookmark.push(newsId);
+      bookmark.push(newsTitle);
       AsyncStorage.setItem("bookmark", JSON.stringify(bookmark));
       alert("News Saved!");
     }
   });
 };
 
-const removeBookmark =async (newsId) => {
+const removeBookmark =async (newsTitle) => {
 setBookmark(false);
 const bookmark = await AsyncStorage.getItem("bookmark").then((token) => {
   const res = JSON.parse(token);
-  return res.filter((id) => id !== newsId);
+  return res.filter((title) => title !== newsTitle);
 } )
 await AsyncStorage.setItem("bookmark",JSON.stringify(bookmark));
 alert("News unsaved")
 };
 
-const renderBookmark = async (newsId) => {
+const renderBookmark = async (newsTitle) => {
   await AsyncStorage.getItem("bookmark").then((token) => {
     const res = JSON.parse(token);
 
     console.log("errorrrr i got:",res)
     if (res != null) {
-      let data = res.find((value) =>value === newsId);
+      let data = res.find((value) =>value === newsTitle);
       return data == null ? setBookmark(false) : setBookmark(true);
      
     }
@@ -79,8 +81,8 @@ const renderBookmark = async (newsId) => {
 
 <TouchableOpacity
   onPress={() => {
-    setFav(fav === news.id ? null : news.id);
-    saveBookmark(news.id);
+    setFav(fav === news.title ? null : news.title);
+    saveBookmark(news.title);
   }}
 >
   <Text>Save</Text>
@@ -140,8 +142,8 @@ const renderBookmark = async (newsId) => {
             }}
           >
             <TouchableOpacity
-              onPress={() => {setFav(fav === news.source.name ? null : news.source.name); 
-                bookmark ? removeBookmark(news.source.name): saveBookmark(news.source.name);}}
+              onPress={() => {setFav(fav === news.title ? null : news.title); 
+                bookmark ? removeBookmark(news.title): saveBookmark(news.title);}}
               style={{
                 backgroundColor:
                    isDarkMode ? "#212529" : "white",

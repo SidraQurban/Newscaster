@@ -63,7 +63,7 @@ const getTopHeadline = async () => {
                   style={{
                     marginTop: responsiveHeight(2),
                     fontSize: responsiveFontSize(1.5),
-                    color: isDarkMode? "#e9ecef" : "black",
+                                        color: isDarkMode? "#e9ecef" : "black",
 
                   }}
                 >
