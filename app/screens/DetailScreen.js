@@ -22,7 +22,7 @@ useEffect(() => {
 useFocusEffect(
   React.useCallback(() => {
     if (news) {
-      renderBookmark(news.title); 
+      renderBookmark(news.title);  // Now using news.title instead of news.id
     }
   }, [news]) // This ensures that we check the bookmark state when the screen is focused
 );
@@ -94,6 +94,7 @@ const renderBookmark = async (newsTitle) => {
         style={{
           padding: responsiveWidth(3),
           backgroundColor: isDarkMode ? "#212529" : "#f8f9fa",
+          height:responsiveHeight(100)
         }}
       >
         <SafeAreaView>
