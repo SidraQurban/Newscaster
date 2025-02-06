@@ -17,8 +17,8 @@ const SaveScreen = () => {
    return (
      <View
        style={{
-         backgroundColor: isDarkMode ? "#212529" : "neutral",
-         height: isDarkMode ? responsiveHeight(100) : "auto",
+         backgroundColor: isDarkMode ? "#212529" : "#f8f9fa",
+         height: responsiveHeight(100),
        }}
      >
        <SafeAreaView
@@ -70,35 +70,35 @@ const SaveScreen = () => {
              marginLeft: responsiveWidth(3),
            }}
          >
-           Settings
+           Saved
          </Text>
        </View>
        {/* body */}
-       <FlatList
-         data={bookmarkNews}
-         renderItem={({ item }) => (
-           <View style={{ flexDirection: "row" }}>
-             <Image
-               source={{ uri: item.urlToImage }}
-               style={{
-                 height: responsiveHeight(25),
-                 width: responsiveWidth(50),
-                 resizeMode: "contain",
-               }}
-             />
-             <Text
-               style={{
-                 marginTop: responsiveHeight(6),
-                 color: isDarkMode ? "white" : "black",
-                 fontSize: responsiveFontSize(2),
-                 fontWeight: "500",
-               }}
-             >
-               {item.title}
-             </Text>
-           </View>
-         )}
-       />
+
+       <View style={{ marginTop: responsiveHeight(2) }}>
+         <Image
+           source={require("../../assets/1.jpeg")}
+           style={{
+             height: responsiveHeight(20),
+             width: responsiveWidth(50),
+             borderRadius: responsiveHeight(2),
+             resizeMode: "cover",
+             marginLeft: responsiveWidth(3),
+           }}
+         />
+         <Text
+           style={{
+             position: "absolute",
+             marginLeft: responsiveWidth(56),
+             marginRight: responsiveWidth(0),
+             color:isDarkMode ? "white" :"black",
+             fontSize: responsiveFontSize(2),
+             fontWeight:"500"
+           }}
+         >
+           The Take: How will President Ahmed Al-Sharaa shape Syria's future?
+         </Text>
+       </View>
      </View>
    );
 }
