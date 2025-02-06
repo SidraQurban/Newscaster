@@ -14,10 +14,10 @@ const { isDarkMode, toggleTheme } = useTheme();
       style={{
         marginTop: responsiveHeight(1.6),
         padding: responsiveHeight(2),
-        backgroundColor:  isDarkMode ? "#212529" : "white",
+        backgroundColor: isDarkMode ? "#212529" : "white",
       }}
     >
-      <View style={{ height: responsiveHeight(70), }}>
+      <View style={{ height: responsiveHeight(60), }}>
         <TouchableOpacity
           style={{
             flexDirection: "row",
@@ -27,11 +27,15 @@ const { isDarkMode, toggleTheme } = useTheme();
             paddingVertical: responsiveHeight(2.6),
             borderBottomColor: "#dee2e6",
             borderBottomWidth: 1,
-            marginTop:responsiveHeight(5)
+            marginTop: responsiveHeight(3),
           }}
         >
           <Text
-            style={{ fontSize: responsiveFontSize(2), fontWeight: "500" , color: isDarkMode ? "white" : "black", }}
+            style={{
+              fontSize: responsiveFontSize(2),
+              fontWeight: "500",
+              color: isDarkMode ? "white" : "black",
+            }}
           >
             About
           </Text>
@@ -73,7 +77,11 @@ const { isDarkMode, toggleTheme } = useTheme();
           }}
         >
           <Text
-            style={{ fontSize: responsiveFontSize(2), fontWeight: "500",  color: isDarkMode ? "white" : "black", }}
+            style={{
+              fontSize: responsiveFontSize(2),
+              fontWeight: "500",
+              color: isDarkMode ? "white" : "black",
+            }}
           >
             Privacy Policy
           </Text>
@@ -92,7 +100,11 @@ const { isDarkMode, toggleTheme } = useTheme();
           }}
         >
           <Text
-            style={{ fontSize: responsiveFontSize(2), fontWeight: "500",  color: isDarkMode ? "white" : "black", }}
+            style={{
+              fontSize: responsiveFontSize(2),
+              fontWeight: "500",
+              color: isDarkMode ? "white" : "black",
+            }}
           >
             Terms of Use
           </Text>
@@ -112,7 +124,11 @@ const { isDarkMode, toggleTheme } = useTheme();
           }}
         >
           <Text
-            style={{ fontSize: responsiveFontSize(2), fontWeight: "500",  color: isDarkMode ? "white" : "black", }}
+            style={{
+              fontSize: responsiveFontSize(2),
+              fontWeight: "500",
+              color: isDarkMode ? "white" : "black",
+            }}
           >
             Dark Mode
           </Text>
@@ -130,7 +146,7 @@ const { isDarkMode, toggleTheme } = useTheme();
         </TouchableOpacity>
         {/* Logout */}
         <TouchableOpacity
-        onPress={() =>navigation.navigate("Welcome")}
+          onPress={() => navigation.navigate("Welcome")}
           style={{
             flexDirection: "row",
             justifyContent: "space-between",

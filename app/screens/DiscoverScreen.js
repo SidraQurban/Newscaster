@@ -176,7 +176,7 @@ const DiscoverScreen = () => {
                       height: responsiveHeight(5),
                       alignItems: "center",
                       justifyContent: "center",
-                      width: responsiveHeight(11),
+                      width: responsiveHeight(13),
                       borderRadius: responsiveHeight(4),
                     }}
                   >
