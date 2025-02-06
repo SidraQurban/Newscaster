@@ -10,13 +10,7 @@ import GlobalApi from '../services/GlobalApi'
 const SaveScreen = () => {
   const {isDarkMode} = useTheme();
   const [bookmarkNews, setBookmarkNews] =useState([]); 
-  useEffect(() => {
-    fetchBookmark()
-  }, [])
-
-  
-
-  return (
+   return (
     <View
       style={{
         backgroundColor: isDarkMode ? "#212529" : "neutral",
