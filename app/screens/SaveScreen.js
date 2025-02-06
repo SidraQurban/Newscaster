@@ -10,35 +10,7 @@ import GlobalApi from '../services/GlobalApi'
 const SaveScreen = () => {
   const {isDarkMode} = useTheme();
   const [bookmarkNews, setBookmarkNews] =useState([]); 
-  useEffect(() => {
-    fetchBookmark()
-  }, [])
- 
-  const fetchBookmark = async () => {
-    await AsyncStorage.getItem("bookmark").then(async (token) => {
-      const res = JSON.parse(token); // Fetch saved bookmarks from AsyncStorage
-      if (res) {
-        console.log("Saved bookmarks:", res);
-  
-        // Create query_string to match against the saved bookmarks
-        const query_string = res.join(',');
-  
-        // Check if the current newsTitle matches any of the saved bookmarks
-        // Assuming you have `newsTitle` available from some source, for example, from props or state
-        const newsTitle = "Some news title";  // Replace with dynamic newsTitle
-  
-        if (query_string.includes(newsTitle)) {
-          console.log('This news is bookmarked!');
-          setBookmarkNews(res); // Set bookmarked news if it exists in saved list
-        } else {
-          console.log('This news is not bokmarked.');
-          setBookmarkNews([]); // Clear the list if no match
-        }
-      } else {
-        setBookmarkNews([]); // No bookmarks saved
-      }
-    });
-  };
+
   
 
   return (
