@@ -22,7 +22,7 @@ useEffect(() => {
 useFocusEffect(
   React.useCallback(() => {
     if (news) {
-      renderBookmark(news.title);  // Now using news.title instead of news.id
+      renderBookmark(news.title);  
     }
   }, [news]) // This ensures that we check the bookmark state when the screen is focused
 );

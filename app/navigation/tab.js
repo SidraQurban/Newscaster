@@ -11,6 +11,7 @@ import {
   responsiveWidth,
 } from "react-native-responsive-dimensions";
 import { Ionicons, Fontisto, FontAwesome5 } from "react-native-vector-icons";
+import { useTheme } from "../ThemeProvider";
 
 const Tab = createBottomTabNavigator();
 
@@ -22,6 +23,8 @@ const CustomTabButton = (props) => (
 );
 
 const Tabs = () => {
+  const {isDarkMode} = useTheme();
+
   return (
     <Tab.Navigator
       screenOptions={{
@@ -29,9 +32,9 @@ const Tabs = () => {
         tabBarShowLabel: false,
         tabBarStyle: {
           position: "absolute",
-          backgroundColor: "white",
+          backgroundColor: isDarkMode ? "#495057" : "white",
           height: responsiveHeight(10),
-          borderTopLeftRadius:responsiveHeight(2.5),
+          borderTopLeftRadius: responsiveHeight(2.5),
           borderTopRightRadius: responsiveHeight(2.5),
         },
       }}
@@ -53,11 +56,11 @@ const Tabs = () => {
               <Ionicons
                 name="home"
                 size={25}
-                color={focused ? "#2196f3" : "#979dac"}
+                color={focused? "#2196f3"  : isDarkMode ? "white" : "#979dac"  }
               />
               <Text
                 style={{
-                  color: focused ? "#2196f3" : "#979dac",
+                  color: focused ? "#2196f3" : isDarkMode? "white" : "#979dac",
                   fontSize: responsiveFontSize(1.7),
                   fontWeight: "600",
                   marginTop: responsiveHeight(0.5),
@@ -86,11 +89,11 @@ const Tabs = () => {
               <Fontisto
                 name="world"
                 size={25}
-                color={focused ? "#2196f3" : "#979dac"}
+                color={focused? "#2196f3"  : isDarkMode ? "white" : "#979dac"  }
               />
               <Text
                 style={{
-                  color: focused ? "#2196f3" : "#979dac",
+                  color: focused ? "#2196f3" : isDarkMode? "white" : "#979dac",
                   fontSize: responsiveFontSize(1.7),
                   marginTop: responsiveHeight(0.5),
                   fontWeight: "600",
@@ -119,11 +122,11 @@ const Tabs = () => {
               <Fontisto
                 name="favorite"
                 size={25}
-                color={focused ? "#2196f3" : "#979dac"}
+                color={focused? "#2196f3"  : isDarkMode ? "white" : "#979dac"  }
               />
               <Text
                 style={{
-                  color: focused ? "#2196f3" : "#979dac",
+                  color: focused ? "#2196f3" : isDarkMode? "white" : "#979dac",
                   fontSize: responsiveFontSize(1.7),
                   fontWeight: "600",
                   marginTop: responsiveHeight(0.5),
@@ -152,11 +155,11 @@ const Tabs = () => {
               <Ionicons
                 name="settings"
                 size={25}
-                color={focused ? "#2196f3" : "#979dac"}
+                color={focused? "#2196f3"  : isDarkMode ? "white" : "#979dac"  }
               />
               <Text
                 style={{
-                  color: focused ? "#2196f3" : "#979dac",
+                  color: focused ? "#2196f3" : isDarkMode? "white" : "#979dac",
                   fontSize: responsiveFontSize(1.7),
                   marginTop: responsiveHeight(0.5),
                   fontWeight: "600",
