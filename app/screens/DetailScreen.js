@@ -1,65 +1,92 @@
 import { View, Text, Image, TouchableOpacity, Share, Linking, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
-import { Ionicons, Entypo, MaterialIcons } from "react-native-vector-icons"
-import { useTheme } from '../ThemeProvider'
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import { useFocusEffect, useRoute, useNavigation } from '@react-navigation/native'
+import GlobalApi from '../services/GlobalApi';
+import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native';
+import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions';
+import{ Ionicons,Entypo,MaterialIcons} from "react-native-vector-icons"
+import { useTheme } from '../ThemeProvider';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const DetailScreen = () => {
-  const news = useRoute().params.news;
-  const navigation = useNavigation();
-  const { isDarkMode } = useTheme();
-  const [bookmark, setBookmark] = useState(false); // To track if the news is bookmarked
+const news = useRoute().params.news;
+const navigation = useNavigation();
+const [isLoading,setIsLoading] = useState(true)
+const { isDarkMode } = useTheme();
+const [fav,setFav] = useState(null);
+const [bookmark,setBookmark] = useState(false);
+useEffect(() => {
+  console.log(news);
+}, []);
 
-  useEffect(() => {
-    checkIfBookmarked(); // Check if the news is already bookmarked when the screen loads
-  }, []);
-
-  useFocusEffect(
-    React.useCallback(() => {
-      checkIfBookmarked(); // Re-check bookmark status when the screen is focused
-    }, [news])
-  );
-
-  const checkIfBookmarked = async () => {
-    const bookmarks = await AsyncStorage.getItem('@bookmarkNews');
-    const parsedBookmarks = bookmarks ? JSON.parse(bookmarks) : [];
-    const isBookmarked = parsedBookmarks.some(item => item.title === news.title);
-    setBookmark(isBookmarked);
-  };
-
-  const saveBookmark = async () => {
-    const bookmarks = await AsyncStorage.getItem('@bookmarkNews');
-    const parsedBookmarks = bookmarks ? JSON.parse(bookmarks) : [];
-
-    if (!parsedBookmarks.some(item => item.title === news.title)) {
-      parsedBookmarks.push(news); // Add current news to the bookmarks list
-      await AsyncStorage.setItem('@bookmarkNews', JSON.stringify(parsedBookmarks));
-      setBookmark(true);
-      alert('News saved!');
+useFocusEffect(
+  React.useCallback(() => {
+    if (news) {
+      renderBookmark(news.title);  // Now using news.title instead of news.id
     }
-  };
+  }, [news]) // This ensures that we check the bookmark state when the screen is focused
+);
 
-  const removeBookmark = async () => {
-    const bookmarks = await AsyncStorage.getItem('@bookmarkNews');
-    const parsedBookmarks = bookmarks ? JSON.parse(bookmarks) : [];
-    const updatedBookmarks = parsedBookmarks.filter(item => item.title !== news.title); // Remove current news
-    await AsyncStorage.setItem('@bookmarkNews', JSON.stringify(updatedBookmarks));
-    setBookmark(false);
-    alert('News unsaved!');
-  };
+const shareNews = () => {
+  Share.share({
+    message: news.title + "\nRead More" + news.description,
+  });
+}
 
-  const shareNews = () => {
-    Share.share({
-      message: news.title + "\nRead More: " + news.description,
-    });
-  };
+const Readmore = () => {
+  Linking.openURL(news.url);
+};
+const saveBookmark = async (newsTitle) => {
+  setBookmark(true);
+  await AsyncStorage.getItem("bookmark").then((token) => {
+    const res = JSON.parse(token);
+    if (res !== null) {
+      let data = res.find((value) => value === newsTitle);
+      if (data == null) {
+        res.push(newsTitle);
+        AsyncStorage.setItem("bookmark", JSON.stringify(res));
+        alert("News Saved!");
+      }
+    } else {
+      let bookmark = [];
+      bookmark.push(newsTitle);
+      AsyncStorage.setItem("bookmark", JSON.stringify(bookmark));
+      alert("News Saved!");
+    }
+  });
+};
 
-  const Readmore = () => {
-    Linking.openURL(news.url);
-  };
+const removeBookmark =async (newsTitle) => {
+setBookmark(false);
+const bookmark = await AsyncStorage.getItem("bookmark").then((token) => {
+  const res = JSON.parse(token);
+  return res.filter((title) => title !== newsTitle);
+} )
+await AsyncStorage.setItem("bookmark",JSON.stringify(bookmark));
+alert("News unsaved")
+};
+
+const renderBookmark = async (newsTitle) => {
+  await AsyncStorage.getItem("bookmark").then((token) => {
+    const res = JSON.parse(token);
+
+    console.log("errorrrr i got:",res)
+    if (res != null) {
+      let data = res.find((value) =>value === newsTitle);
+      return data == null ? setBookmark(false) : setBookmark(true);
+     
+    }
+  })
+}
+
+<TouchableOpacity
+  onPress={() => {
+    setFav(fav === news.title ? null : news.title);
+    saveBookmark(news.title);
+  }}
+>
+  <Text>Save</Text>
+</TouchableOpacity>;
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
@@ -67,10 +94,11 @@ const DetailScreen = () => {
         style={{
           padding: responsiveWidth(3),
           backgroundColor: isDarkMode ? "#212529" : "#f8f9fa",
-          height: responsiveHeight(100)
+          height:responsiveHeight(100)
         }}
       >
         <SafeAreaView>
+          {/* goback icon */}
           <View
             style={{
               backgroundColor: isDarkMode ? "#343a40" : "#dee2e6",
@@ -81,7 +109,17 @@ const DetailScreen = () => {
               alignItems: "center",
             }}
           >
-            <TouchableOpacity onPress={() => navigation.goBack()}>
+            <TouchableOpacity
+              onPress={() => navigation.goBack()}
+              style={{
+                backgroundColor: isDarkMode ? "#212529" : "white",
+                height: responsiveHeight(4.5),
+                width: responsiveHeight(4.5),
+                borderRadius: responsiveHeight(2.5),
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               <Ionicons
                 name="chevron-back"
                 size={20}
@@ -89,74 +127,118 @@ const DetailScreen = () => {
               />
             </TouchableOpacity>
           </View>
+          {/* share icon */}
+          <View
+            style={{
+              flexDirection: "row",
+              gap: responsiveWidth(1),
+              marginTop: responsiveHeight(-5),
+              marginLeft: responsiveWidth(72),
+              backgroundColor: isDarkMode ? "#343a40" : "#dee2e6",
+              height: responsiveHeight(5),
+              width: responsiveHeight(11),
+              borderRadius: responsiveHeight(2.8),
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <TouchableOpacity
+              onPress={() => {setFav(fav === news.title ? null : news.title); 
+                bookmark ? removeBookmark(news.title): saveBookmark(news.title);}}
+              style={{
+                backgroundColor:
+                   isDarkMode ? "#212529" : "white",
+                height: responsiveHeight(4.7),
+                width: responsiveHeight(4.7),
+                borderRadius: responsiveHeight(2.5),
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <MaterialIcons
+                name={bookmark ? "favorite" : "favorite-outline"}
+                size={20}
+                color={bookmark? "red" :isDarkMode ? "white" : "black"}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => shareNews()}
+              style={{
+                backgroundColor: isDarkMode ? "#212529" : "white",
+                height: responsiveHeight(4.7),
+                width: responsiveHeight(4.7),
+                borderRadius: responsiveHeight(2.5),
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Entypo
+                name="share"
+                size={20}
+                color={isDarkMode ? "white" : "black"}
+              />
+            </TouchableOpacity>
+          </View>
         </SafeAreaView>
-
-        {/* Share and Bookmark Icons */}
-        <View
-          style={{
-            flexDirection: "row",
-            gap: responsiveWidth(1),
-            marginTop: responsiveHeight(-5),
-            marginLeft: responsiveWidth(72),
-            backgroundColor: isDarkMode ? "#343a40" : "#dee2e6",
-            height: responsiveHeight(5),
-            width: responsiveHeight(11),
-            borderRadius: responsiveHeight(2.8),
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <TouchableOpacity
-            onPress={() => {
-              bookmark ? removeBookmark() : saveBookmark();
-            }}
+        {/* Text */}
+        <View style={{ flexDirection: "row", marginTop: responsiveHeight(2) }}>
+          <Text
             style={{
-              backgroundColor: isDarkMode ? "#212529" : "white",
-              height: responsiveHeight(4.7),
-              width: responsiveHeight(4.7),
-              borderRadius: responsiveHeight(2.5),
-              justifyContent: "center",
-              alignItems: "center",
+              color: "#979dac",
+              fontSize: responsiveFontSize(1.6),
             }}
           >
-            <MaterialIcons
-              name={bookmark ? "favorite" : "favorite-outline"}
-              size={20}
-              color={bookmark ? "red" : isDarkMode ? "white" : "black"}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={shareNews}
+            {news.source.name}
+          </Text>
+          <Entypo
+            name="dot-single"
+            color="#979dac"
+            size={15}
             style={{
-              backgroundColor: isDarkMode ? "#212529" : "white",
-              height: responsiveHeight(4.7),
-              width: responsiveHeight(4.7),
-              borderRadius: responsiveHeight(2.5),
-              justifyContent: "center",
-              alignItems: "center",
+              marginLeft: responsiveWidth(6),
+              marginTop: responsiveHeight(0.23),
+            }}
+          />
+          <Text
+            style={{
+              color: "#979dac",
+              fontSize: responsiveFontSize(1.6),
+              marginLeft: responsiveWidth(1),
             }}
           >
-            <Entypo
-              name="share"
-              size={20}
-              color={isDarkMode ? "white" : "black"}
-            />
-          </TouchableOpacity>
+            {news.publishedAt.slice(0, 10)}
+          </Text>
+          <Entypo
+            name="dot-single"
+            color="#979dac"
+            size={15}
+            style={{
+              marginLeft: responsiveWidth(6),
+              marginTop: responsiveHeight(0.23),
+            }}
+          />
+          <Text
+            style={{
+              color: "#979dac",
+              fontSize: responsiveFontSize(1.6),
+              marginLeft: responsiveWidth(1),
+            }}
+          >
+            {news.publishedAt.slice(11, 19)}
+          </Text>
         </View>
-
-        {/* News details */}
+        {/* title */}
         <Text
           style={{
+            marginTop: responsiveHeight(2),
             fontSize: responsiveFontSize(2.7),
             fontWeight: "600",
             color: isDarkMode ? "#e9ecef" : "black",
-            marginTop: responsiveHeight(2),
           }}
         >
           {news.title.split(" - ")[0]}
         </Text>
-
-        {/* News image */}
+        {/* Image */}
         <Image
           source={{ uri: news.urlToImage }}
           style={{
@@ -165,33 +247,39 @@ const DetailScreen = () => {
             marginTop: responsiveHeight(2),
           }}
         />
-
-        {/* Description */}
-        <Text
+        {/* description */}
+        <View
           style={{
-            fontSize: responsiveFontSize(2.2),
-            fontWeight: "500",
-            color: isDarkMode ? "#e9ecef" : "black",
             marginTop: responsiveHeight(2),
           }}
         >
-          {news.description}
-        </Text>
-
-        {/* Content */}
-        <Text
-          style={{
-            fontSize: responsiveFontSize(2.2),
-            fontWeight: "500",
-            color: isDarkMode ? "#e9ecef" : "black",
-            marginTop: responsiveHeight(2),
-          }}
-        >
-          {news.content.split("[")[0]}
-        </Text>
-
+          <Text
+            style={{
+              fontSize: responsiveFontSize(2.2),
+              fontWeight: "500",
+              color: isDarkMode ? "#e9ecef" : "black",
+            }}
+          >
+            {news.description}
+          </Text>
+        </View>
+        {/* content */}
+        <View style={{ marginTop: responsiveHeight(2) }}>
+          <Text
+            style={{
+              fontSize: responsiveFontSize(2.2),
+              fontWeight: "500",
+              color: isDarkMode ? "#e9ecef" : "black",
+            }}
+          >
+            {news.content.split("[")[0]}
+          </Text>
+        </View>
         {/* Read more */}
-        <TouchableOpacity onPress={Readmore} style={{ marginTop: responsiveHeight(1) }}>
+        <TouchableOpacity
+          onPress={() => Readmore()}
+          style={{ marginTop: responsiveHeight(1) }}
+        >
           <Text
             style={{
               fontSize: responsiveFontSize(2.2),
@@ -205,6 +293,6 @@ const DetailScreen = () => {
       </View>
     </ScrollView>
   );
-};
+}
 
-export default DetailScreen
+export default DetailScreen;
