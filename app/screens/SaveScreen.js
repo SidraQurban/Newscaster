@@ -90,7 +90,6 @@ const SaveScreen = () => {
            style={{
              position: "absolute",
              marginLeft: responsiveWidth(56),
-             marginRight: responsiveWidth(0),
              color:isDarkMode ? "white" :"black",
              fontSize: responsiveFontSize(2),
              fontWeight:"500"
