@@ -89,12 +89,18 @@ const renderBookmark = async (newsTitle) => {
 </TouchableOpacity>;
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      style={{
+        height: "100%",
+        backgroundColor: isDarkMode ? "#212529" : "#f8f9fa",
+      }}
+    >
       <View
         style={{
           padding: responsiveWidth(3),
           backgroundColor: isDarkMode ? "#212529" : "#f8f9fa",
-          height:responsiveHeight(100)
+          height: responsiveHeight(100),
         }}
       >
         <SafeAreaView>
@@ -143,11 +149,14 @@ const renderBookmark = async (newsTitle) => {
             }}
           >
             <TouchableOpacity
-              onPress={() => {setFav(fav === news.title ? null : news.title); 
-                bookmark ? removeBookmark(news.title): saveBookmark(news.title);}}
+              onPress={() => {
+                setFav(fav === news.title ? null : news.title);
+                bookmark
+                  ? removeBookmark(news.title)
+                  : saveBookmark(news.title);
+              }}
               style={{
-                backgroundColor:
-                   isDarkMode ? "#212529" : "white",
+                backgroundColor: isDarkMode ? "#212529" : "white",
                 height: responsiveHeight(4.7),
                 width: responsiveHeight(4.7),
                 borderRadius: responsiveHeight(2.5),
@@ -158,7 +167,7 @@ const renderBookmark = async (newsTitle) => {
               <MaterialIcons
                 name={bookmark ? "favorite" : "favorite-outline"}
                 size={20}
-                color={bookmark? "red" :isDarkMode ? "white" : "black"}
+                color={bookmark ? "red" : isDarkMode ? "white" : "black"}
               />
             </TouchableOpacity>
             <TouchableOpacity
