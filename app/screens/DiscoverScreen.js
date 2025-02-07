@@ -32,7 +32,7 @@ const DiscoverScreen = () => {
     setLoading(true); 
     const result = (await GlobalApi.getNewsByCategory(category)).data;
     setNewsList(result.articles);
-    setFilteredNewsList(result.articles); // Set initial filtered list
+    setFilteredNewsList(result.articles); 
     setLoading(false);
   };
 
