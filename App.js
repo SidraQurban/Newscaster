@@ -5,9 +5,7 @@ import { ThemeProvider } from './app/ThemeProvider';
 const App = () => {
   return (
     <ThemeProvider>
-     
-      <AppNavigation />
-      
+      <AppNavigation />      
     </ThemeProvider>
   );
 };
