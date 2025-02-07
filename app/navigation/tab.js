@@ -10,7 +10,7 @@ import {
   responsiveHeight,
   responsiveWidth,
 } from "react-native-responsive-dimensions";
-import { Ionicons, Fontisto, FontAwesome5 } from "react-native-vector-icons";
+import { Ionicons, Fontisto } from "react-native-vector-icons";
 import { useTheme } from "../ThemeProvider";
 
 const Tab = createBottomTabNavigator();
@@ -174,5 +174,4 @@ const Tabs = () => {
     </Tab.Navigator>
   );
 };
-
 export default Tabs;
