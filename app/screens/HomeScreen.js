@@ -17,6 +17,7 @@ const {isDarkMode} = useTheme();
         backgroundColor: isDarkMode ? "#212529" : "#f8f9fa",
       }}
     >
+      {/* Header */}
       <FlatList
         ListHeaderComponent={
           <SafeAreaView>
@@ -47,7 +48,6 @@ const {isDarkMode} = useTheme();
                 />
               </TouchableOpacity>
             </View>
-
             <View
               style={{
                 flexDirection: "row",
