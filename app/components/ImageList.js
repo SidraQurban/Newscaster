@@ -1,11 +1,11 @@
-import { View, Text, TouchableOpacity, ScrollView, FlatList } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import { View, Text, TouchableOpacity, FlatList } from 'react-native';
+import React, { useEffect, useState } from 'react';
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
-import GlobalApi from '../services/GlobalApi'
-import { Image } from 'react-native'
-import Recommand from './Recommand'
-import { useNavigation } from '@react-navigation/native'
-import { useTheme } from '../ThemeProvider'
+import GlobalApi from '../services/GlobalApi';
+import { Image } from 'react-native';
+import Recommand from './Recommand';
+import { useNavigation } from '@react-navigation/native';
+import { useTheme } from '../ThemeProvider';
 
 const ImageList = () => {
 const {isDarkMode} = useTheme();
@@ -35,7 +35,7 @@ setNewsList(result.articles)
         height: isDarkMode ? responsiveHeight(100) : "auto",
       }}
     >
-      {/* text */}
+      {/* Header */}
       <View
         style={{
           marginTop: responsiveHeight(2),
@@ -134,7 +134,8 @@ setNewsList(result.articles)
           )}
         />
       </View>
-      {/* text */}
+
+      {/* Recommandation Text */}
       <View
         style={{
           flexDirection: "row",
