@@ -10,7 +10,6 @@ import { Ionicons } from "react-native-vector-icons";
 const SaveScreen = () => {
   const {isDarkMode} = useTheme();
   const navigation = useNavigation();  
-  const [bookmarkNews, setBookmarkNews] =useState([]); 
   
    return (
      <View
