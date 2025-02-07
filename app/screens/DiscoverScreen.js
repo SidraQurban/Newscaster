@@ -35,9 +35,8 @@ const DiscoverScreen = () => {
     setFilteredNewsList(result.articles); 
     setLoading(false);
   };
-
-  // Filter news list based on search text
-  const handleSearch = (text) => {
+  
+const handleSearch = (text) => {
     setText(text);
     if (text === "") {
       setFilteredNewsList(newsList); // If search is empty, show all articles
@@ -142,7 +141,7 @@ const DiscoverScreen = () => {
                 <TextInput
                   placeholder="Search"
                   value={text}
-                  onChangeText={handleSearch} // Update search text and filter list
+                  onChangeText={handleSearch}
                   style={{
                     fontSize: responsiveFontSize(2),
                     flex: 1,
@@ -198,7 +197,6 @@ const DiscoverScreen = () => {
                 )}
               />
             </View>
-
             {/* Show loading or the filtered data */}
             {loading ? (
               <ActivityIndicator color="blue" size="30" />
@@ -215,8 +213,7 @@ const DiscoverScreen = () => {
               </Text>
             ) : (
               <CategoryData
-                // selectCategory={getNewsByCategory}
-                newsList={filteredNewsList} // Pass the filtered list
+                newsList={filteredNewsList} 
                 setNewsList={setNewsList}
               />
             )}
