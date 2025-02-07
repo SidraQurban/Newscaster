@@ -1,9 +1,9 @@
-import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import GlobalApi from '../services/GlobalApi'
+import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import GlobalApi from '../services/GlobalApi';
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
-import { useNavigation } from '@react-navigation/native'
-import { useTheme } from '../ThemeProvider'
+import { useNavigation } from '@react-navigation/native';
+import { useTheme } from '../ThemeProvider';
 
 const Recommand = () => {
 const navigation = useNavigation();
@@ -19,14 +19,15 @@ const getTopHeadline = async () => {
 };
   return (
     <View style={{ marginTop: responsiveHeight(1) }}>
-     
       {/* news list */}
       <View>
         <FlatList
           data={newsList}
           showsVerticalScrollIndicator={false}
           renderItem={({ item }) => (
-            <TouchableOpacity onPress={()=>navigation.navigate("Detail", {news:item})}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Detail", { news: item })}
+            >
               <Image
                 source={{ uri: item.urlToImage }}
                 style={{
@@ -54,7 +55,7 @@ const getTopHeadline = async () => {
                     marginTop: responsiveHeight(1),
                     fontWeight: "600",
                     fontSize: responsiveFontSize(2),
-                    color: isDarkMode? "#e9ecef" : "black",
+                    color: isDarkMode ? "#e9ecef" : "black",
                   }}
                 >
                   {item.title.split(" - ")[0]}
@@ -63,8 +64,7 @@ const getTopHeadline = async () => {
                   style={{
                     marginTop: responsiveHeight(2),
                     fontSize: responsiveFontSize(1.5),
-                                        color: isDarkMode? "#e9ecef" : "black",
-
+                    color: isDarkMode ? "#e9ecef" : "black",
                   }}
                 >
                   {item.publishedAt.slice(0, 10)}
