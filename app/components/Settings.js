@@ -17,6 +17,7 @@ const { isDarkMode, toggleTheme } = useTheme();
         backgroundColor: isDarkMode ? "#212529" : "white",
       }}
     >
+      {/* Buttons */}
       <View style={{ height: responsiveHeight(60), }}>
         <TouchableOpacity
           style={{
