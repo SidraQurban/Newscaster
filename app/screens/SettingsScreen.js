@@ -17,6 +17,7 @@ const SettingsScreen = () => {
         height: responsiveHeight(100),
       }}
     >
+      {/* header */}
        <SafeAreaView
             style={{
               padding: responsiveWidth(3),
