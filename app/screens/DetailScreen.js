@@ -24,7 +24,7 @@ useFocusEffect(
     if (news) {
       renderBookmark(news.title);  
     }
-  }, [news]) // This ensures that we check the bookmark state when the screen is focused
+  }, [news]) 
 );
 
 const shareNews = () => {
