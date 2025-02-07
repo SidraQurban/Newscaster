@@ -27,7 +27,7 @@ useEffect(() => {
             animation="fadeInDownBig"
             duration={2000}
           >
-            Welcome to NewsCaster
+            Welcome to Newscaster
           </Animatable.Text>
           
           <Animatable.Image
