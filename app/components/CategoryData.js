@@ -1,7 +1,6 @@
 import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native';
 import React, { useState } from 'react';
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions';
-import { categories } from '../Constant';
 import { useNavigation } from '@react-navigation/native';
 import { useTheme } from '../ThemeProvider';
 
