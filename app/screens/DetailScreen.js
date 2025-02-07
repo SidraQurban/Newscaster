@@ -69,8 +69,6 @@ alert("News unsaved")
 const renderBookmark = async (newsTitle) => {
   await AsyncStorage.getItem("bookmark").then((token) => {
     const res = JSON.parse(token);
-
-    console.log("errorrrr i got:",res)
     if (res != null) {
       let data = res.find((value) =>value === newsTitle);
       return data == null ? setBookmark(false) : setBookmark(true);
