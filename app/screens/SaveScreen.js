@@ -1,11 +1,9 @@
-import { View, Text, FlatList, TouchableOpacity } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
-import { useTheme } from '../ThemeProvider'
-import { Image } from 'react-native'
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import GlobalApi from '../services/GlobalApi'
+import { View, Text, FlatList, TouchableOpacity } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions';
+import { useTheme } from '../ThemeProvider';
+import { Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from "react-native-vector-icons";
 
