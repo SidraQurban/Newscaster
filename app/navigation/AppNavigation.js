@@ -1,12 +1,9 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import React from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import DetailScreen from "../screens/DetailScreen";
 import tab from '../navigation/tab'
 import WelcomeScreen from '../screens/WelcomeScreen';
-
-
 
 const Stack = createNativeStackNavigator();
 const AppNavigation = () => {
@@ -20,5 +17,4 @@ const AppNavigation = () => {
    </NavigationContainer>
   )
 }
-
 export default AppNavigation
