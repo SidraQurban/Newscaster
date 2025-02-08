@@ -9,6 +9,7 @@ const Recommand = () => {
 const navigation = useNavigation();
 const [newsList, setNewsList] = useState([]);
 const {isDarkMode} = useTheme();    
+
 useEffect (() => {
 getTopHeadline()
 },[])
@@ -17,6 +18,7 @@ const getTopHeadline = async () => {
   const result = (await GlobalApi.getTopHeadline).data;
   setNewsList(result.articles);
 };
+
   return (
     <View style={{ marginTop: responsiveHeight(1) }}>
       {/* news list */}

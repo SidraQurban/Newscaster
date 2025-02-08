@@ -11,10 +11,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const DetailScreen = () => {
 const news = useRoute().params.news;
 const navigation = useNavigation();
-const [isLoading,setIsLoading] = useState(true)
 const { isDarkMode } = useTheme();
 const [fav,setFav] = useState(null);
 const [bookmark,setBookmark] = useState(false);
+
 useEffect(() => {
   console.log(news);
 }, []);
