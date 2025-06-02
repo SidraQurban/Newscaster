@@ -5,7 +5,13 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 const SaveScreen = () => {
   return (
     <SafeAreaView>
-      <View>
+       <View
+            style={{
+              marginTop: responsiveHeight(1.6),
+              padding: responsiveHeight(2),
+              backgroundColor: isDarkMode ? "#212529" : "white",
+            }}
+          >
         <Text>SaveScreen</Text>
       </View>
     </SafeAreaView>
