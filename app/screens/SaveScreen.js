@@ -5,12 +5,11 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 const SaveScreen = () => {
   return (
     <SafeAreaView>
- <View>
-      <Text>SaveScreen</Text>
-    </View>
+      <View>
+        <Text>SaveScreen</Text>
+      </View>
     </SafeAreaView>
-
-  )
+  );
 }
 
 export default SaveScreen
