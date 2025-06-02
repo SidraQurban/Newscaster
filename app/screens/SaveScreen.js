@@ -10,8 +10,7 @@ const SaveScreen = () => {
     </View>
     </SafeAreaView>
     
-    
-   
+  
   )
 }
 
