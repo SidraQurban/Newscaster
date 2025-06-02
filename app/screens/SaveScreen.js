@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { responsiveHeight } from 'react-native-responsive-dimensions';
+import { responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions';
 import { useTheme } from '../ThemeProvider';
 
 const SaveScreen = () => {
@@ -11,9 +11,9 @@ const SaveScreen = () => {
     <SafeAreaView>
        <View
             style={{
-              marginTop: responsiveHeight(1.6),
-              padding: responsiveHeight(2),
-              backgroundColor: isDarkMode ? "#212529" : "white",
+            
+              padding: responsiveWidth(3),
+                     backgroundColor: isDarkMode ? "#212529" : "#f8f9fa",
             }}
           >
         <Text>SaveScreen</Text>
