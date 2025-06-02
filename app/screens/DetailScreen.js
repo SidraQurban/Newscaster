@@ -19,7 +19,6 @@ useEffect(() => {
   console.log(news);
 }, []);
 
-
 useFocusEffect(
   React.useCallback(() => {
     if (news) {
