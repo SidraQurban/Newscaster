@@ -2,6 +2,7 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { responsiveHeight } from 'react-native-responsive-dimensions';
+import { useTheme } from '../ThemeProvider';
 
 const SaveScreen = () => {
   const { isDarkMode, toggleTheme } = useTheme();
