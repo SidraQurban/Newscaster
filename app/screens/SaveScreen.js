@@ -13,9 +13,7 @@ const SaveScreen = () => {
     
     
     
-    <View>
-      <Text>SaveScreen</Text>
-    </View>
+   
   )
 }
 
