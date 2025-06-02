@@ -13,7 +13,7 @@ const SaveScreen = () => {
             style={{
             
               padding: responsiveWidth(3),
-                     backgroundColor: isDarkMode ? "#212529" : "#f8f9fa",
+                    //  backgroundColor: isDarkMode ? "#212529" : "#f8f9fa",
             }}
           >
         <Text>SaveScreen</Text>
