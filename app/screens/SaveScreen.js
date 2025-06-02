@@ -4,6 +4,8 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { responsiveHeight } from 'react-native-responsive-dimensions';
 
 const SaveScreen = () => {
+  const { isDarkMode, toggleTheme } = useTheme();
+  
   return (
     <SafeAreaView>
        <View
