@@ -19,7 +19,7 @@ useEffect(() => {
   console.log(news);
 }, []);
 
-// Check if the news is bookmarked when the component mounts or when the news change
+// Check if the news is bookmarked when the component mounts or when the news 
 useFocusEffect(
   React.useCallback(() => {
     if (news) {
