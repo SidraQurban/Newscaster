@@ -9,13 +9,12 @@ const SaveScreen = () => {
   
   return (
     <SafeAreaView>
-       <View
-            style={{
-            
-              padding: responsiveWidth(3),
-                    //  backgroundColor: isDarkMode ? "#212529" : "#f8f9fa",
-            }}
-          >
+      <View
+        style={{
+          padding: responsiveWidth(3),
+          //  backgroundColor: isDarkMode ? "#212529" : "#f8f9fa",
+        }}
+      >
         <Text>SaveScreen</Text>
       </View>
     </SafeAreaView>
