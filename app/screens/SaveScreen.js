@@ -15,7 +15,10 @@ const SaveScreen = () => {
           //  backgroundColor: isDarkMode ? "#212529" : "#f8f9fa",
         }}
       >
-        <Text>SaveScreen</Text>
+        <View>
+ <Text>SaveScreen</Text>
+        </View>
+       
       </View>
     </SafeAreaView>
   );
