@@ -9,8 +9,7 @@ const SaveScreen = () => {
       <Text>SaveScreen</Text>
     </View>
     </SafeAreaView>
-    
-  
+
   )
 }
 
