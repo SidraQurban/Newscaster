@@ -84,7 +84,7 @@ const renderBookmark = async (newsTitle) => {
   }}
 >
   <Text>
-    Save</Text>
+    Save </Text>
 </TouchableOpacity>;
   return (
     <ScrollView
