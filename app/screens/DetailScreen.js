@@ -79,12 +79,12 @@ const renderBookmark = async (newsTitle) => {
 
      <TouchableOpacity
        onPress={() => {
-        setFav(fav === news.title ? null : news.title);
-        saveBookmark(news.title);
-  }}
-> 
- <Text>Save</Text>
-</TouchableOpacity>;
+         setFav(fav === news.title ? null : news.title);
+         saveBookmark(news.title);
+       }}
+     >
+       <Text>Save</Text>
+     </TouchableOpacity>;
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
