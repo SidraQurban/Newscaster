@@ -77,12 +77,13 @@ const renderBookmark = async (newsTitle) => {
   })
 }
 
-<TouchableOpacity
-  onPress={() => {
+     <TouchableOpacity
+       onPress={() => {
     setFav(fav === news.title ? null : news.title);
     saveBookmark(news.title);
   }}
->  <Text>Save</Text>
+> 
+ <Text>Save</Text>
 </TouchableOpacity>;
   return (
     <ScrollView
