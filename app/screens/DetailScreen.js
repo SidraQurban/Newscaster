@@ -70,20 +70,20 @@ const renderBookmark = async (newsTitle) => {
   await AsyncStorage.getItem("bookmark").then((token) => {
     const res = JSON.parse(token);
     if (res != null) {
-      let data = res.find((value) =>value === newsTitle);
+      let data = res.find((value) => value === newsTitle);
       return data == null ? setBookmark(false) : setBookmark(true);
-     
     }
-  })
+  });
 }
 
  <TouchableOpacity
-       onPress={() => {
-         setFav(fav === news.title ? null : news.title);
-         saveBookmark(news.title);
-       }}
-     ><Text>Save</Text>
-     </TouchableOpacity>;
+   onPress={() => {
+     setFav(fav === news.title ? null : news.title);
+     saveBookmark(news.title);
+   }}
+ >
+   <Text>Save</Text>
+ </TouchableOpacity>;
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
