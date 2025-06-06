@@ -79,7 +79,7 @@ const renderBookmark = async (newsTitle) => {
 
      <TouchableOpacity
 
-     
+    
 
 
        onPress={() => {
