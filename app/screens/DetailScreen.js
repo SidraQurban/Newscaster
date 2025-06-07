@@ -75,7 +75,7 @@ const renderBookmark = async (newsTitle) => {
     }
   });
 }
-           \end{
+           \end
  <TouchableOpacity
    onPress={() => {
      setFav(fav === news.title ? null : news.title);
