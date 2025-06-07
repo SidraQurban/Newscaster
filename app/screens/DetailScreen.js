@@ -81,7 +81,7 @@ const renderBookmark = async (newsTitle) => {
      setFav(fav === news.title ? null : news.title);
      saveBookmark(news.title);
    }}
-   
+      
  >
    <Text>Save</Text>
  </TouchableOpacity>;
