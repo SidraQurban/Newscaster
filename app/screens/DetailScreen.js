@@ -81,12 +81,8 @@ const renderBookmark = async (newsTitle) => {
      setFav(fav === news.title ? null : news.title);
      saveBookmark(news.title);
    }}
-          
  >
-
-   <Text>
-    Save
-    </Text>
+   <Text>Save</Text>
  </TouchableOpacity>;
   return (
     <ScrollView
