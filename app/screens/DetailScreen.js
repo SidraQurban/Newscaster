@@ -83,7 +83,7 @@ const renderBookmark = async (newsTitle) => {
        >
        <Text>Save</Text>
      </TouchableOpacity>
-     
+
   return (
      <ScrollView
       showsVerticalScrollIndicator={false}
@@ -92,6 +92,7 @@ const renderBookmark = async (newsTitle) => {
         backgroundColor: isDarkMode ? "#212529" : "#f8f9fa",
       }}
     >
+      
       <View
         style={{
           padding: responsiveWidth(3),
