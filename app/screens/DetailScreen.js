@@ -84,7 +84,7 @@ const renderBookmark = async (newsTitle) => {
        <Text>Save</Text>
      </TouchableOpacity>;
   return (
-<ScrollView
+     <ScrollView
       showsVerticalScrollIndicator={false}
       style={{
         height: "100%",
