@@ -86,14 +86,14 @@ const renderBookmark = async (newsTitle) => {
      </TouchableOpacity>
 
   return (
-     <ScrollView
+    <ScrollView
       showsVerticalScrollIndicator={false}
       style={{
         height: "100%",
         backgroundColor: isDarkMode ? "#212529" : "#f8f9fa",
       }}
     >
-    <View
+      <View
         style={{
           padding: responsiveWidth(3),
           backgroundColor: isDarkMode ? "#212529" : "#f8f9fa",
