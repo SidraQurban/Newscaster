@@ -18,7 +18,6 @@ const [bookmark,setBookmark] = useState(false);
 useEffect(() => {
   console.log(news);
 }, []);
-
 useFocusEffect(
   React.useCallback(() => {
     if (news) {
@@ -92,7 +91,7 @@ const renderBookmark = async (newsTitle) => {
         backgroundColor: isDarkMode ? "#212529" : "#f8f9fa",
       }}
     >
-    
+  
     <View
         style={{
           padding: responsiveWidth(3),
