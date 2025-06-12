@@ -93,7 +93,7 @@ const renderBookmark = async (newsTitle) => {
         backgroundColor: isDarkMode ? "#212529" : "#f8f9fa",
       }}
     >
-  
+
     <View
         style={{
           padding: responsiveWidth(3),
