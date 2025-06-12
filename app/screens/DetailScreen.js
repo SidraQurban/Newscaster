@@ -57,7 +57,7 @@ const saveBookmark = async (newsTitle) => {
   });
 };
 
-const removeBookmark =async (newsTitle) => {
+const removeBookmark = async (newsTitle) => {
 setBookmark(false);
 const bookmark = await AsyncStorage.getItem("bookmark").then((token) => {
   const res = JSON.parse(token);
