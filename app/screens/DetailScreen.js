@@ -32,6 +32,7 @@ const shareNews = () => {
   });
 }
 
+
 const Readmore = () => {
   Linking.openURL(news.url);
 };
