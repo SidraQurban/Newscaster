@@ -94,6 +94,7 @@ const renderBookmark = async (newsTitle) => {
       }}
     >
     <View
+
     
 
         style={{
