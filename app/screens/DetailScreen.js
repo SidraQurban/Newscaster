@@ -95,7 +95,7 @@ const renderBookmark = async (newsTitle) => {
     >
     <View
 
-    
+  
 
         style={{
           padding: responsiveWidth(3),
