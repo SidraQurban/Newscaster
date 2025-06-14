@@ -35,7 +35,7 @@ const DiscoverScreen = () => {
     setFilteredNewsList(result.articles); 
     setLoading(false);
   };
-  
+
 const handleSearch = (text) => {
     setText(text);
     if (text === "") {
