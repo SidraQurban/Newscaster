@@ -25,7 +25,6 @@ useFocusEffect(
     }
   }, [news]) 
 );
-
 const shareNews = () => {
   Share.share({
     message: news.title + "\nRead More" + news.description,
