@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import GlobalApi from '../services/GlobalApi';
 import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native';
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions';
-import{ Ionicons,Entypo,MaterialIcons} from "react-native-vector-icons"
+import{ Ionicons,Entypo,MaterialIcons} from "react-native-vector-icons";
 import { useTheme } from '../ThemeProvider';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
