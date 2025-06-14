@@ -66,5 +66,4 @@ const SaveScreen = () => {
     </SafeAreaView>
   );
 }
-
 export default SaveScreen;
