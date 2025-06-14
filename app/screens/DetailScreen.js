@@ -9,6 +9,7 @@ import { useTheme } from '../ThemeProvider';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const DetailScreen = () => {
+  
 const news = useRoute().params.news;
 const navigation = useNavigation();
 const { isDarkMode } = useTheme();
