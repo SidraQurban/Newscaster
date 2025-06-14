@@ -33,7 +33,6 @@ const shareNews = () => {
 const Readmore = () => {
   Linking.openURL(news.url);
 };
-
 const saveBookmark = async (newsTitle) => {
   setBookmark(true);
   await AsyncStorage.getItem("bookmark").then((token) => {
