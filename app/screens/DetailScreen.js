@@ -30,7 +30,7 @@ const shareNews = () => {
     message: news.title + "\nRead More" + news.description,
   });
 }
-    
+
 const Readmore = () => {
   Linking.openURL(news.url);
 };
