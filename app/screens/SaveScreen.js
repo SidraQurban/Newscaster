@@ -67,4 +67,4 @@ const SaveScreen = () => {
   );
 }
 
-export default SaveScreen
+export default SaveScreen;
