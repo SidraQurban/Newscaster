@@ -1,6 +1,6 @@
 import { View, Text, Image, TouchableOpacity, Share, Linking, ScrollView } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { SafeAreaView } from 'react-native-safe-area-context';
 import GlobalApi from '../services/GlobalApi';
 import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native';
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions';
