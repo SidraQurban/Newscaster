@@ -61,7 +61,6 @@ const bookmark = await AsyncStorage.getItem("bookmark").then((token) => {
 await AsyncStorage.setItem("bookmark",JSON.stringify(bookmark));
 alert("News unsaved")
 };
-
 const renderBookmark = async (newsTitle) => {
   await AsyncStorage.getItem("bookmark").then((token) => {
     const res = JSON.parse(token);
