@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity, Share, Linking, ScrollView } from 'react-native'
+import { View, Text, Image, TouchableOpacity, Share, Linking, ScrollView } from 'react-native';
 import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import GlobalApi from '../services/GlobalApi';
@@ -83,7 +83,7 @@ const renderBookmark = async (newsTitle) => {
          }}
        >
        <Text>Save</Text>
-       
+
      </TouchableOpacity>
 
   return (
