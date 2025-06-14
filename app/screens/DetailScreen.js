@@ -18,7 +18,6 @@ const [bookmark,setBookmark] = useState(false);
 useEffect(() => {
   console.log(news);
 }, []);
-
 useFocusEffect(
   React.useCallback(() => {
     if (news) {
