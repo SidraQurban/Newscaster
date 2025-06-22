@@ -175,4 +175,4 @@ const { isDarkMode, toggleTheme } = useTheme();
   );
 }
 
-export default Settings
+export default Settings;
