@@ -48,4 +48,4 @@ useEffect(() => {
   );
 }
 
-export default WelcomeScreen
+export default WelcomeScreen;
