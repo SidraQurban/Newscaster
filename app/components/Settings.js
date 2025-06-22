@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity, Switch } from 'react-native';
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
 import { Ionicons , MaterialIcons} from "react-native-vector-icons";
 import { useTheme } from '../ThemeProvider';
