@@ -76,4 +76,4 @@ const SettingsScreen = () => {
   );
 }
 
-export default SettingsScreen
+export default SettingsScreen;
