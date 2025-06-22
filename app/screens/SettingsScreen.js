@@ -1,5 +1,5 @@
-import { View, Text, TouchableOpacity } from 'react-native'
-import React from 'react'
+import { View, Text, TouchableOpacity } from 'react-native';
+import React from 'react';
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
 import Settings from '../components/Settings';
 import { useTheme } from '../ThemeProvider';
