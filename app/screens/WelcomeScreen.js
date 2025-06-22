@@ -46,6 +46,7 @@ useEffect(() => {
       </SafeAreaView>
     </View>
   );
+  
 }
 
 export default WelcomeScreen
