@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Switch } from 'react-native'
+import { View, Text, TouchableOpacity, Switch } from 'react-native';
 import React, { useState } from 'react'
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
 import { Ionicons , MaterialIcons} from "react-native-vector-icons";
