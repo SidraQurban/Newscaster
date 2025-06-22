@@ -80,4 +80,4 @@ const getTopHeadline = async () => {
   );
 }
 
-export default Recommand
+export default Recommand;
