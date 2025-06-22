@@ -17,4 +17,4 @@ const AppNavigation = () => {
    </NavigationContainer>
   )
 }
-export default AppNavigation
+export default AppNavigation;
