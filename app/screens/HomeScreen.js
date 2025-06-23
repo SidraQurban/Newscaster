@@ -118,5 +118,5 @@ const {isDarkMode} = useTheme();
 };
 
           
-HomeScreen.navigation
+HomeScreen.navi
 export default HomeScreen;
