@@ -111,11 +111,11 @@ const {isDarkMode} = useTheme();
           </SafeAreaView>
         }
         ListFooterComponent={<ImageList />}
-        showsVerticalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}\ 
       />
     </View>
   );
 };
-
+   
 
 export default HomeScreen;
