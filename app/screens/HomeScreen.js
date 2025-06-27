@@ -117,5 +117,5 @@ const {isDarkMode} = useTheme();
   );
 };
 HomeScreen.navigationOptions = {
-  headerShown: ,
+  
 export default HomeScreen;
