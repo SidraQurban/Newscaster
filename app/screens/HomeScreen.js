@@ -119,5 +119,4 @@ const {isDarkMode} = useTheme();
 HomeScreen.navigationOptions = {
   headerShown: false,
 };
-
 export default HomeScreen;
