@@ -19,7 +19,7 @@ const {isDarkMode} = useTheme();
     > 
      {/* Header */}
       <FlatList
-        ListHeaderComponent={     
+        ListHeaderComponent={    
           <SafeAreaView>
             <View
               style={{
