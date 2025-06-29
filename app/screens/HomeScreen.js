@@ -16,8 +16,8 @@ const {isDarkMode} = useTheme();
         padding: responsiveWidth(3),
         backgroundColor: isDarkMode ? "#212529" : "#f8f9fa",
       }}
-    >
-      {/* Header */}
+    > 
+     {/* Header */}
       <FlatList
         ListHeaderComponent={
           <SafeAreaView>
@@ -117,6 +117,4 @@ const {isDarkMode} = useTheme();
   );
 };
 
-
-HomeScreen.navigation
 export default HomeScreen;
