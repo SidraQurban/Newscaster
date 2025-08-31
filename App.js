@@ -1,13 +1,12 @@
-import React from 'react';
-import AppNavigation from './app/navigation/AppNavigation';
-import { ThemeProvider } from './app/ThemeProvider';
+import React from "react";
+import AppNavigation from "./app/navigation/AppNavigation";
+import { ThemeProvider } from "./app/ThemeProvider";
 
 const App = () => {
   return (
     <ThemeProvider>
-      <AppNavigation />      
+      <AppNavigation />
     </ThemeProvider>
   );
 };
-
 export default App;
