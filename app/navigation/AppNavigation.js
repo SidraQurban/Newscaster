@@ -5,7 +5,7 @@ import DetailScreen from "../screens/DetailScreen";
 import tab from "../navigation/tab";
 import WelcomeScreen from "../screens/WelcomeScreen";
 
-const 
+cons;
 const Stack = createNativeStackNavigator();
 const AppNavigation = () => {
   return (
