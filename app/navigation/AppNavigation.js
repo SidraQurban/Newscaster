@@ -16,6 +16,6 @@ const AppNavigation = () => {
     </Stack.Navigator>
    </NavigationContainer>
   )
-  <>
+  <
 }
 export default AppNavigation;
