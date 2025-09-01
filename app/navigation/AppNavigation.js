@@ -23,6 +23,5 @@ const AppNavigation = () => {
 export default AppNavigation;
 export cast  = {[
   {
-    "cell_type": "code",
-    "metadata": {
+    
 
