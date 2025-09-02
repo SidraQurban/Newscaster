@@ -22,4 +22,4 @@ const AppNavigation = () => {
 };
 export default AppNavigation;
 
-exp;
+ex;
