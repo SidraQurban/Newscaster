@@ -21,4 +21,4 @@ const AppNavigation = () => {
   );
 };
 export default AppNavigation;
-xport default Appiti;
+xport default Appti;
