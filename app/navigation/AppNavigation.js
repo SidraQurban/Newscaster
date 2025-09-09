@@ -23,7 +23,7 @@ const AppNavigation = () => {
 export default AppNavigation;
 export default AppNavigation;
 export default AppNavigation;
-export default AppNavigation;
+export default AppNavigati
 ;
 expo;
 
