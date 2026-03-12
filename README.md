@@ -31,10 +31,6 @@ The Discover Screen enables users to search for any type of news using keywords 
 The Saved Screen displays all favorite articles that users have saved for later reading. This provides a convenient way to keep track of important or interesting news and access it anytime within the app.
 <br>
 <br>
-
-<br>
-<br>
-
 **Settings Screen**
 <br>
 The Settings Screen offers multiple customization options to enhance the user experience. A key feature is the Change Mode toggle, which switches between light mode and dark mode, providing visual comfort and improving usability in different lighting conditions.
