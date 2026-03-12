@@ -16,7 +16,6 @@ The Home Screen provides multiple latest news sliders, allowing users to quickly
 <br>
 <br>
 <img width="162" height="355" alt="pic 1" src="https://github.com/user-attachments/assets/19c73eeb-b68c-4c41-97fd-c8cda401b3e5" />
-
 <br>
 <br>
 **Discover Screen:**
@@ -25,10 +24,9 @@ The Discover Screen enables users to search for any type of news using keywords 
 <br>
 <br>
 <img width="160" height="355" alt="pic 2" src="https://github.com/user-attachments/assets/33e1988b-6513-4ea2-a7ce-975dd9358ec1" />
-
 <br>
 <br>
-**Save Screen:**
+**Saved Screen:**
 <br>
 The Saved Screen displays all favorite articles that users have saved for later reading. This provides a convenient way to keep track of important or interesting news and access it anytime within the app.
 <br>
@@ -36,12 +34,12 @@ The Saved Screen displays all favorite articles that users have saved for later 
 
 <br>
 <br>
+
 **Settings Screen**
 <br>
 The Settings Screen offers multiple customization options to enhance the user experience. A key feature is the Change Mode toggle, which switches between light mode and dark mode, providing visual comfort and improving usability in different lighting conditions.
 <br>
 <br>
 <img width="159" height="358" alt="pic 4" src="https://github.com/user-attachments/assets/81033f47-97c8-4a3b-92ae-6cc496c944d0" />
-
 <br>
 <br>
